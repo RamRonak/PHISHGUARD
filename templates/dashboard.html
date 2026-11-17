@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Learning Dashboard – PHISHGUARD</title>
+  <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/static/css/phishguard.css">
+</head>
+<body>
+
+  <!-- Main Navigation Bar -->
+  <nav class="navbar-phishguard">
+    <div class="container d-flex justify-content-between align-items-center flex-wrap gap-2">
+      <a href="/" class="brand-wrapper">
+        <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+        </svg>
+        <span>PHISHGUARD</span>
+        <span class="brand-badge">Security Training</span>
+      </a>
+
+      <div class="nav-links-wrapper">
+        <a href="/" class="nav-item-link">Home</a>
+        <a href="/fundamentals" class="nav-item-link">Fundamentals</a>
+        <a href="/emails" class="nav-item-link">Emails</a>
+        <a href="/fake-websites" class="nav-item-link">Fake Sites</a>
+        <a href="/social-engineering" class="nav-item-link">Social Eng.</a>
+        <a href="/case-studies" class="nav-item-link">Case Studies</a>
+        <a href="/quiz" class="nav-item-link">Quiz</a>
+        <a href="/simulation-lab" class="nav-item-link">Sim Lab</a>
+        <a href="/safety-guide" class="nav-item-link">Safety Guide</a>
+        <a href="/final-assessment" class="nav-item-link">Assessment</a>
+        <a href="/dashboard" class="nav-item-link active" style="color: #60a5fa; border-left: 1px solid var(--border-color); padding-left: 0.75rem;">Dashboard</a>
+        <button id="themeToggleBtn" class="theme-toggle-btn" onclick="togglePhishGuardTheme()" title="Toggle Light/Dark Theme"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg> <span>Dark</span></button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Global Training Progress Bar Ticker -->
+  <div class="nav-ticker-bar">
+    <div class="container d-flex justify-content-between align-items-center">
+      <span style="color: var(--text-muted);">Curriculum Progress: <strong id="navProgressText" style="color: var(--accent-blue-text);">0% Complete</strong></span>
+      <div class="nav-progress-track">
+        <div id="navProgressFill" class="nav-progress-fill"></div>
+      </div>
+    </div>
+  </div>
+
+  <main class="container py-5">
+    <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 mb-5">
+      <div>
+        <span class="section-tag">Learning Analytics</span>
+        <h1 class="section-title">Defensive Readiness Dashboard</h1>
+        <p class="section-desc">
+          Track your module completion progress, quiz scores, capstone assessment results, and verified certificate credentials.
+        </p>
+      </div>
+      <div class="d-flex gap-2">
+        <button class="btn btn-cyber-outline btn-sm" onclick="resetAllProgress()" style="color: #ef4444; border-color: rgba(239, 68, 68, 0.4);">
+          Reset Progress to 0%
+        </button>
+        <a href="/fundamentals" class="btn btn-cyber-primary btn-sm">
+          Start Training →
+        </a>
+      </div>
+    </div>
+
+    <!-- 4 Key Stat Metrics Cards -->
+    <div class="row g-4 mb-5">
+      <div class="col-sm-6 col-lg-3">
+        <div class="dashboard-stat-card h-100">
+          <div class="card-icon-bubble bubble-cyan mx-auto">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+              <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+            </svg>
+          </div>
+          <div class="stat-val" id="dashCompletedCount">0 / 10</div>
+          <div class="stat-label">Modules Completed</div>
+          <div class="progress-bar-cyber mt-3">
+            <div id="dashProgressFill" class="progress-fill-cyber" style="width: 0%;"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-lg-3">
+        <div class="dashboard-stat-card h-100">
+          <div class="card-icon-bubble bubble-green mx-auto">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 14 14"></polyline>
+            </svg>
+          </div>
+          <div class="stat-val" id="dashProgressPct">0%</div>
+          <div class="stat-label">Curriculum Progress</div>
+          <p class="text-muted mt-2 mb-0" style="font-size: 0.75rem;">10 Integrated Modules</p>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-lg-3">
+        <div class="dashboard-stat-card h-100">
+          <div class="card-icon-bubble bubble-amber mx-auto">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="9 11 12 14 22 4"></polyline>
+              <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+            </svg>
+          </div>
+          <div class="stat-val" id="dashQuizScore">0%</div>
+          <div class="stat-label">15-Question Quiz Score</div>
+          <a href="/quiz" class="btn btn-cyber-outline btn-sm mt-2" style="font-size: 0.75rem;">Take / Retake</a>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-lg-3">
+        <div class="dashboard-stat-card h-100">
+          <div class="card-icon-bubble bubble-purple mx-auto">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="8" r="7"></circle>
+              <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
+            </svg>
+          </div>
+          <div class="stat-val" id="dashAssessScore">0%</div>
+          <div class="stat-label">Final Capstone Exam</div>
+          <div class="mt-2" id="dashCertStatus">
+            <span class="cyber-badge badge-amber">PENDING (80% req.)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Canvas Charts Section -->
+    <div class="row g-4 mb-5">
+      <!-- Doughnut Progress Chart -->
+      <div class="col-lg-5">
+        <div class="cyber-card h-100 text-center">
+          <h5 class="text-white fw-bold mb-3">Curriculum Completion Ratio</h5>
+          <div class="d-flex justify-content-center align-items-center py-2">
+            <canvas id="doughnutChartCanvas" width="220" height="220"></canvas>
+          </div>
+          <p class="text-muted mb-0" style="font-size: 0.85rem;">
+            Real-time visual tracking of completed educational modules and exercises.
+          </p>
+        </div>
+      </div>
+
+      <!-- Category Mastery Bar Chart -->
+      <div class="col-lg-7">
+        <div class="cyber-card h-100">
+          <h5 class="text-white fw-bold mb-3">Topic Mastery Competency Breakdown</h5>
+          <div class="d-flex justify-content-center align-items-center py-2">
+            <canvas id="masteryBarCanvas" width="480" height="220" style="max-width: 100%;"></canvas>
+          </div>
+          <p class="text-muted mb-0 text-center" style="font-size: 0.85rem;">
+            Scores dynamically reflect practice tests, URL lab exercises, and scenario diagnostics.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 10-Module Checklist Status Table -->
+    <div class="cyber-card mb-5">
+      <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-3">
+        <h4 class="text-white fw-bold mb-0">Module Status & Learning Pathway</h4>
+        <span class="cyber-badge badge-cyan">ALL 10 MODULES</span>
+      </div>
+
+      <div class="table-responsive">
+        <table class="table table-dark table-hover mb-0" style="background: transparent; font-size: 0.9rem;">
+          <thead>
+            <tr style="border-bottom: 1px solid var(--border-color); color: var(--text-muted);">
+              <th>#</th>
+              <th>Module Name</th>
+              <th>Topic Category</th>
+              <th>Status</th>
+              <th class="text-end">Action</th>
+            </tr>
+          </thead>
+          <tbody id="moduleTableBody">
+            <tr>
+              <td>1</td>
+              <td><strong>Home / Overview</strong></td>
+              <td>Threat Landscape</td>
+              <td><span class="cyber-badge badge-green">✓ Completed</span></td>
+              <td class="text-end"><a href="/" class="btn btn-cyber-outline btn-sm">Review</a></td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td><strong>Phishing Fundamentals</strong></td>
+              <td>Attack Taxonomy</td>
+              <td><span class="cyber-badge badge-cyan" id="modStatus2">In Progress</span></td>
+              <td class="text-end"><a href="/fundamentals" class="btn btn-cyber-primary btn-sm">Study</a></td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td><strong>Recognizing Emails</strong></td>
+              <td>Forensic Red Flags</td>
+              <td><span class="cyber-badge badge-cyan" id="modStatus3">In Progress</span></td>
+              <td class="text-end"><a href="/emails" class="btn btn-cyber-outline btn-sm">Inspect</a></td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td><strong>Fake Website Detection</strong></td>
+              <td>URL Deception Lab</td>
+              <td><span class="cyber-badge badge-cyan" id="modStatus4">In Progress</span></td>
+              <td class="text-end"><a href="/fake-websites" class="btn btn-cyber-outline btn-sm">Analyze</a></td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td><strong>Social Engineering</strong></td>
+              <td>Cognitive Triggers</td>
+              <td><span class="cyber-badge badge-cyan" id="modStatus5">In Progress</span></td>
+              <td class="text-end"><a href="/social-engineering" class="btn btn-cyber-outline btn-sm">Learn</a></td>
+            </tr>
+            <tr>
+              <td>6</td>
+              <td><strong>Real-World Case Studies</strong></td>
+              <td>Historical Incidents</td>
+              <td><span class="cyber-badge badge-cyan" id="modStatus6">In Progress</span></td>
+              <td class="text-end"><a href="/case-studies" class="btn btn-cyber-outline btn-sm">Explore</a></td>
+            </tr>
+            <tr>
+              <td>7</td>
+              <td><strong>15-Question Quiz</strong></td>
+              <td>Knowledge Check</td>
+              <td><span class="cyber-badge badge-cyan" id="modStatus7">In Progress</span></td>
+              <td class="text-end"><a href="/quiz" class="btn btn-cyber-primary btn-sm">Take Quiz</a></td>
+            </tr>
+            <tr>
+              <td>8</td>
+              <td><strong>Simulation Lab</strong></td>
+              <td>Interactive Sandbox</td>
+              <td><span class="cyber-badge badge-cyan" id="modStatus8">In Progress</span></td>
+              <td class="text-end"><a href="/simulation-lab" class="btn btn-cyber-outline btn-sm">Enter Lab</a></td>
+            </tr>
+            <tr>
+              <td>9</td>
+              <td><strong>Safety Guide & Checklist</strong></td>
+              <td>Defensive Habits</td>
+              <td><span class="cyber-badge badge-cyan" id="modStatus9">In Progress</span></td>
+              <td class="text-end"><a href="/safety-guide" class="btn btn-cyber-outline btn-sm">View Guide</a></td>
+            </tr>
+            <tr>
+              <td>10</td>
+              <td><strong>Final Assessment</strong></td>
+              <td>Capstone Certification</td>
+              <td><span class="cyber-badge badge-cyan" id="modStatus10">In Progress</span></td>
+              <td class="text-end"><a href="/final-assessment" class="btn btn-cyber-success btn-sm">Exam</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Certificate Verification Tool -->
+    <div class="cyber-card p-4 mb-5" style="border: 1px solid var(--border-color);">
+      <h5 class="text-white fw-bold mb-2">Certificate Registry Lookup</h5>
+      <p class="text-muted" style="font-size: 0.85rem;">
+        Verify any student or employee Certificate ID issued by the PHISHGUARD SQLite database registry.
+      </p>
+      <div class="row g-2" style="max-width: 600px;">
+        <div class="col-8">
+          <input type="text" id="verifyCertInput" class="url-input-field" placeholder="Enter Certificate ID e.g. PG-2026-X94B12">
+        </div>
+        <div class="col-4">
+          <button class="btn btn-cyber-primary w-100" onclick="verifyCertOnline()">
+            Verify ID
+          </button>
+        </div>
+      </div>
+      <div id="verifyCertResult" class="mt-3" style="display: none;"></div>
+    </div>
+
+  </main>
+
+  <footer class="cyber-footer">
+    <div class="container text-center text-muted" style="font-size: 0.85rem;">
+      PHISHGUARD Educational Cybersecurity Training Platform • College Capstone Project
+    </div>
+  </footer>
+
+  <script src="/static/js/app.js"></script>
+  <script src="/static/js/charts.js"></script>
+  <script>
+    // Update individual table badges based on completed modules
+    document.addEventListener('DOMContentLoaded', () => {
+      const completed = JSON.parse(localStorage.getItem('phishguard_completed_modules') || '[]');
+      const mapping = {
+        'fundamentals': 'modStatus2',
+        'email_phishing': 'modStatus3',
+        'fake_websites': 'modStatus4',
+        'social_engineering': 'modStatus5',
+        'case_studies': 'modStatus6',
+        'quiz': 'modStatus7',
+        'simulation_lab': 'modStatus8',
+        'safety_guide': 'modStatus9',
+        'final_assessment': 'modStatus10'
+      };
+
+      for (const [modId, elId] of Object.entries(mapping)) {
+        if (completed.includes(modId)) {
+          const el = document.getElementById(elId);
+          if (el) {
+            el.className = 'cyber-badge badge-green';
+            el.innerText = '✓ Completed';
+          }
+        }
+      }
+    });
+
+    async function verifyCertOnline() {
+      const id = document.getElementById('verifyCertInput').value.trim();
+      if (!id) return;
+      const resDiv = document.getElementById('verifyCertResult');
+      resDiv.style.display = 'block';
+
+      try {
+        const res = await fetch(`${API_BASE}/api/certificate/verify?cert_id=${encodeURIComponent(id)}`);
+        const data = await res.json();
+        if (data.valid && data.certificate) {
+          playCyberTone('success');
+          resDiv.innerHTML = `
+            <div style="background: rgba(16, 185, 129, 0.15); border: 1px solid #10b981; padding: 1rem; border-radius: 8px; color: #a7f3d0;">
+              <strong>Verified Record:</strong> Certificate ID <code>${data.certificate.certificate_id}</code> is authentic.<br>
+              Issued to: <strong>${data.certificate.recipient_name}</strong> | Score: <strong>${data.certificate.score_percentage}%</strong> | Date: <strong>${data.certificate.issued_at}</strong>
+            </div>
+          `;
+        } else {
+          playCyberTone('alert');
+          resDiv.innerHTML = `
+            <div style="background: rgba(239, 68, 68, 0.15); border: 1px solid #ef4444; padding: 1rem; border-radius: 8px; color: #fca5a5;">
+              <strong>Unverified:</strong> Certificate ID was not found in the SQLite training record database.
+            </div>
+          `;
+        }
+      } catch (e) {
+        resDiv.innerHTML = `<div class="text-warning">Offline mode: Please ensure Python server app.py is running.</div>`;
+      }
+    }
+  </script>
+</body>
+</html>
+

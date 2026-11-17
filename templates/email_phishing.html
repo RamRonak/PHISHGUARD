@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recognizing Phishing Emails – PHISHGUARD</title>
+  <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/static/css/phishguard.css">
+</head>
+<body>
+
+  <!-- Main Navigation Bar -->
+  <nav class="navbar-phishguard">
+    <div class="container d-flex justify-content-between align-items-center flex-wrap gap-2">
+      <a href="/" class="brand-wrapper">
+        <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+        </svg>
+        <span>PHISHGUARD</span>
+        <span class="brand-badge">Security Training</span>
+      </a>
+
+      <div class="nav-links-wrapper">
+        <a href="/" class="nav-item-link">Home</a>
+        <a href="/fundamentals" class="nav-item-link">Fundamentals</a>
+        <a href="/emails" class="nav-item-link active">Emails</a>
+        <a href="/fake-websites" class="nav-item-link">Fake Sites</a>
+        <a href="/social-engineering" class="nav-item-link">Social Eng.</a>
+        <a href="/case-studies" class="nav-item-link">Case Studies</a>
+        <a href="/quiz" class="nav-item-link">Quiz</a>
+        <a href="/simulation-lab" class="nav-item-link">Sim Lab</a>
+        <a href="/safety-guide" class="nav-item-link">Safety Guide</a>
+        <a href="/final-assessment" class="nav-item-link">Assessment</a>
+        <a href="/dashboard" class="nav-item-link" style="color: #60a5fa; border-left: 1px solid var(--border-color); padding-left: 0.75rem;">Dashboard</a>
+        <button id="themeToggleBtn" class="theme-toggle-btn" onclick="togglePhishGuardTheme()" title="Toggle Light/Dark Theme"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg> <span>Dark</span></button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Global Training Progress Bar Ticker -->
+  <div class="nav-ticker-bar">
+    <div class="container d-flex justify-content-between align-items-center">
+      <span style="color: var(--text-muted);">Curriculum Progress: <strong id="navProgressText" style="color: var(--accent-blue-text);">0% Complete</strong></span>
+      <div class="nav-progress-track">
+        <div id="navProgressFill" class="nav-progress-fill"></div>
+      </div>
+    </div>
+  </div>
+
+  <main class="container py-5">
+    <div class="mb-5">
+      <span class="section-tag">PAGE 3 • EMAIL FORENSICS</span>
+      <h1 class="section-title">Recognizing Phishing Emails</h1>
+      <p class="section-desc">
+        Learn the 7 cardinal warning signs of email deception, then inspect 5 realistic fictional training emails with interactive red-flag annotations.
+      </p>
+    </div>
+
+    <!-- The 7 Cardinal Warning Signs -->
+    <section class="mb-5">
+      <div class="mb-4">
+        <span class="section-tag">INDICATORS</span>
+        <h2 class="section-title" style="font-size: 1.75rem;">The 7 Red Flags of a Phishing Email</h2>
+      </div>
+
+      <div class="row g-3">
+        <div class="col-md-6 col-lg-4">
+          <div class="cyber-card h-100 p-3">
+            <h6 class="text-white fw-bold mb-2">1. Suspicious Sender Addresses</h6>
+            <p class="text-muted" style="font-size: 0.85rem; margin: 0;">
+              Display name says "IT Support", but the actual address is <code>helpdesk99@gmail.com</code> or a lookalike domain like <code>@micros0ft.com</code>. Always expand the sender header.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+          <div class="cyber-card h-100 p-3">
+            <h6 class="text-white fw-bold mb-2">2. Artificial Urgency & Deadlines</h6>
+            <p class="text-muted" style="font-size: 0.85rem; margin: 0;">
+              Demands immediate reaction within 1 to 2 hours under threat of account termination, legal action, or payroll loss to induce panic and prevent verification.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+          <div class="cyber-card h-100 p-3">
+            <h6 class="text-white fw-bold mb-2">3. High-Risk Attachments</h6>
+            <p class="text-muted" style="font-size: 0.85rem; margin: 0;">
+              Container files (.iso, .img), password-protected .zip files used to evade mail gateway scanners, or macro-enabled documents (.docm, .xlsm).
+            </p>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+          <div class="cyber-card h-100 p-3">
+            <h6 class="text-white fw-bold mb-2">4. Deceptive Hyperlinks</h6>
+            <p class="text-muted" style="font-size: 0.85rem; margin: 0;">
+              Hyperlink text says "Click to verify", but hovering reveals a completely unrelated destination or tricky subdomain (e.g. <code>paypal.com.scam.net</code>).
+            </p>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+          <div class="cyber-card h-100 p-3">
+            <h6 class="text-white fw-bold mb-2">5. Grammar & Tone Inconsistencies</h6>
+            <p class="text-muted" style="font-size: 0.85rem; margin: 0;">
+              Awkward phrasing, generic greetings ("Dear Customer"), or an uncharacteristically demanding tone from someone claiming to be an internal executive.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+          <div class="cyber-card h-100 p-3">
+            <h6 class="text-white fw-bold mb-2">6. Solicitations for Credentials</h6>
+            <p class="text-muted" style="font-size: 0.85rem; margin: 0;">
+              Direct requests for your password, two-factor SMS OTP code, or prompts to "re-authenticate" your account on an unverified external form.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-md-12">
+          <div class="cyber-card p-3" style="border-left: 3px solid var(--accent-red);">
+            <h6 class="text-white fw-bold mb-1">7. Unexpected Wire, Banking or Invoice Changes</h6>
+            <p class="text-muted" style="font-size: 0.85rem; margin: 0;">
+              Direct requests to wire funds, purchase gift cards, or update vendor banking direct-deposit details without secondary out-of-band telephone verification.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive 5 Fictional Email Investigation Lab -->
+    <section class="mb-5">
+      <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-3">
+        <div>
+          <span class="section-tag">Interactive Laboratory</span>
+          <h2 class="section-title" style="font-size: 1.75rem;">5 Fictional Email Case Studies</h2>
+        </div>
+        <div class="cyber-badge badge-amber" style="font-size: 0.75rem;">
+          Fictional Educational Samples
+        </div>
+      </div>
+
+      <!-- Tab Buttons for 5 Emails -->
+      <div class="d-flex gap-2 flex-wrap mb-4" id="emailTabsContainer">
+        <button class="btn btn-cyber-primary btn-sm" onclick="showEmailCase(0, this)">Case 1: M365 Password Expiration</button>
+        <button class="btn btn-cyber-outline btn-sm" onclick="showEmailCase(1, this)">Case 2: CEO Wire Transfer (BEC)</button>
+        <button class="btn btn-cyber-outline btn-sm" onclick="showEmailCase(2, this)">Case 3: Courier Delivery Fee</button>
+        <button class="btn btn-cyber-outline btn-sm" onclick="showEmailCase(3, this)">Case 4: HR Bonus Spreadsheet</button>
+        <button class="btn btn-cyber-outline btn-sm" onclick="showEmailCase(4, this)">Case 5: Bank Security Lockdown</button>
+      </div>
+
+      <!-- Email Client Viewer Container -->
+      <div class="email-client-mockup">
+        <div class="email-top-header">
+          <div class="d-flex align-items-center gap-2">
+            <span style="display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: #ef4444;"></span>
+            <span style="display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: #f59e0b;"></span>
+            <span style="display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: #10b981;"></span>
+            <span class="text-white fw-bold ms-2" id="caseSubjectDisplay" style="font-size: 0.95rem;">Subject loading...</span>
+          </div>
+          <span class="cyber-badge badge-red" id="caseBadgeDisplay">ATTACK VECTOR</span>
+        </div>
+
+        <div class="email-meta-table">
+          <div class="email-meta-row">
+            <span class="text-muted fw-bold">From:</span>
+            <span id="caseSenderDisplay" class="text-white">...</span>
+          </div>
+          <div class="email-meta-row">
+            <span class="text-muted fw-bold">Reply-To:</span>
+            <span id="caseReplyToDisplay" style="color: #f87171;">...</span>
+          </div>
+          <div class="email-meta-row">
+            <span class="text-muted fw-bold">To:</span>
+            <span class="text-muted">employee@enterprise-corp.com</span>
+          </div>
+        </div>
+
+        <div class="email-body-content" id="caseBodyDisplay">
+          <!-- Populated by JS -->
+        </div>
+
+        <!-- Forensic Red Flags & Safety Action Drawer -->
+        <div style="background: var(--bg-card); border-top: 1px solid var(--border-color); padding: 1.5rem;">
+          <div class="row g-4">
+            <div class="col-md-7">
+              <h6 class="text-white fw-bold mb-2 text-uppercase" style="font-size: 0.85rem; letter-spacing: 0.05em; color: #f87171 !important;">
+                Detected Security Indicators (Red Flags):
+              </h6>
+              <ul id="caseFlagsList" style="color: #cbd5e1; font-size: 0.85rem; line-height: 1.6; padding-left: 1.25rem; margin: 0;">
+                <!-- Populated by JS -->
+              </ul>
+            </div>
+            <div class="col-md-5">
+              <div style="background: var(--accent-green-subtle); border: 1px solid var(--accent-green-border); border-radius: 8px; padding: 1.15rem;">
+                <h6 style="color: #34d399; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; margin-bottom: 0.35rem; letter-spacing: 0.04em;">
+                  Recommended Safety Protocol:
+                </h6>
+                <p id="caseSafetyAction" style="color: #e2e8f0; font-size: 0.85rem; margin: 0; line-height: 1.5;">
+                  <!-- Populated by JS -->
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Navigation & Next Steps -->
+    <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 pt-4 border-top border-secondary">
+      <a href="/fundamentals" class="btn btn-cyber-outline">← Back to Fundamentals</a>
+      <button class="btn btn-cyber-primary" onclick="continueToWebsites()">
+        Mark Module 3 Completed & Go to Fake Website Detection →
+      </button>
+    </div>
+  </main>
+
+  <footer class="cyber-footer">
+    <div class="container text-center text-muted" style="font-size: 0.85rem;">
+      PHISHGUARD Educational Cybersecurity Training Platform • College Capstone Project
+    </div>
+  </footer>
+
+  <script src="/static/js/app.js"></script>
+  <script>
+    const emailCases = [
+      {
+        subject: "[URGENT] Microsoft 365 Password Expiration Notice - Keep Current Password",
+        vector: "CREDENTIAL HARVESTING",
+        sender: "Microsoft 365 Helpdesk &lt;admin@ms-security-portal-auth.com&gt;",
+        replyTo: "harvest@attacker-domain.xyz",
+        body: `
+          <p>Dear Valued Enterprise Colleague,</p>
+          <p>Your Microsoft 365 corporate password is scheduled to expire in <strong style="color: #f87171;">2 hours</strong> per company security compliance policy.</p>
+          <p>To retain your existing password and avoid immediate lockout from Outlook, Teams, and OneDrive, you must verify your identity immediately:</p>
+          <p style="margin: 1.5rem 0;">
+            <a href="javascript:void(0)" style="color: #38bdf8; text-decoration: underline; font-weight: bold;" title="Destination: http://login.microsoft.com.account-verify-portal.net/login">
+              👉 Click Here to Keep Current Password & Maintain Access
+            </a>
+          </p>
+          <p style="font-size: 0.8rem; color: #94a3b8;">Automated System Generated Notification. Do not reply to this email.</p>
+        `,
+        flags: [
+          "Sender Domain: Originates from 'ms-security-portal-auth.com' rather than the verified 'microsoft.com'.",
+          "Mismatched Reply-To: Replies redirect to an attacker mailbox 'harvest@attacker-domain.xyz'.",
+          "Artificial Panic: Imposes an aggressive 2-hour deadline to prevent employee consultation with IT.",
+          "Illogical Logic: Legitimate enterprise password systems never allow you to 'click here to keep your expired password'."
+        ],
+        safety: "Do NOT click the link. Report the email using the corporate 'Report Phishing' button. If concerned about your password, open your browser and navigate to the official company SSO portal directly."
+      },
+      {
+        subject: "CONFIDENTIAL / IMMEDIATE: Urgent Wire Transfer for Overseas M&A Escrow",
+        vector: "WHALING / EXECUTIVE BEC",
+        sender: "David Sterling (Chief Executive Officer) &lt;david.sterling@enterprise-corp.co&gt;",
+        replyTo: "david.ceo.executive@gmail.com",
+        body: `
+          <p>Finance Team,</p>
+          <p>I am currently boarding a flight to Zurich for confidential M&A acquisition negotiations. Do not attempt to call my mobile as I will have no cellular reception for the next 7 hours.</p>
+          <p>We need an immediate wire transfer of <strong>$148,500.00 USD</strong> dispatched to our escrow legal counsel in Frankfurt before banking cutoff at 4:00 PM CET, or the acquisition deal falls through.</p>
+          <p>Wire instructions are in the attached encrypted archive. The password is 'Escrow2026'. Proceed immediately and send confirmation once completed.</p>
+          <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); padding: 0.75rem; border-radius: 6px; max-width: 380px; margin: 1rem 0;">
+            📁 Escrow_Wiring_Instructions_Encrypted.zip (482 KB)
+          </div>
+          <p>Regards,<br><strong>David Sterling</strong><br>Chief Executive Officer</p>
+        `,
+        flags: [
+          "Lookalike Domain: The sender address uses '.co' instead of the authentic company domain '.com'.",
+          "Communication Barrier Pretext: Attackers claim 'boarding a flight' specifically to prevent the employee from calling to verify.",
+          "Password-Protected Archive: Encrypted ZIP attachments evade automated enterprise gateway antivirus inspection.",
+          "High Pressure / Bypassing Controls: Exploiting executive authority to bypass mandatory dual-authorization wire policies."
+        ],
+        safety: "Never execute financial wire requests received via email without performing mandatory Out-of-Band (OOB) telephone callback verification to a pre-established, verified company phone number."
+      },
+      {
+        subject: "DHL Express: Unsuccessful Delivery Notice for Parcel #DHL-982410-US",
+        vector: "SMISHING / E-COMMERCE LURE",
+        sender: "DHL Express Customer Notifications &lt;support@dhl-tracking-express24.info&gt;",
+        replyTo: "support@dhl-tracking-express24.info",
+        body: `
+          <p>Dear Customer,</p>
+          <p>Your incoming shipment <strong>#DHL-982410-US</strong> could not be delivered on November 16, 2026 due to an incomplete suite address and an outstanding customs import fee of <strong>$2.95 USD</strong>.</p>
+          <p>To schedule immediate re-delivery to your correct address, please confirm your postal details and pay the nominal dispatch fee:</p>
+          <p style="margin: 1.5rem 0;">
+            <a href="javascript:void(0)" style="color: #38bdf8; text-decoration: underline; font-weight: bold;" title="Destination: https://dhl.com.package-dispatch-fee.online/pay">
+              📦 Update Address & Pay Customs Duty ($2.95)
+            </a>
+          </p>
+          <p style="font-size: 0.8rem; color: #94a3b8;">Parcels left unclaimed after 48 hours will be destroyed.</p>
+        `,
+        flags: [
+          "Generic Salutation: Addressed to 'Dear Customer' rather than your registered name.",
+          "Deceptive Domain: Uses '.info' and lookalike prefix 'dhl-tracking-express24' instead of 'dhl.com'.",
+          "Micro-Fee Trap: Asking for a small $2.95 fee disarms suspicion, but the counterfeit portal captures credit card numbers, CVVs, and mobile OTPs.",
+          "Subdomain Cloaking: Destination URL begins with 'dhl.com.' as a subdomain prefix on 'package-dispatch-fee.online'."
+        ],
+        safety: "Never click tracking links inside unexpected delivery emails or texts. Visit the official courier website (dhl.com) directly and manually enter the tracking code in the official tracking tool."
+      },
+      {
+        subject: "CONFIDENTIAL: 2026 Executive Compensation Review & Bonus Allocation",
+        vector: "MALICIOUS MACRO PAYLOAD",
+        sender: "HR Compensation Committee &lt;hr-benefits@enterprise-corp-rewards.net&gt;",
+        replyTo: "hr-benefits@enterprise-corp-rewards.net",
+        body: `
+          <p>Colleagues,</p>
+          <p>Please find attached the approved annual bonus allocations and compensation adjustment matrix for your respective team members for fiscal year 2026.</p>
+          <p>Please review your team's figures prior to Friday's executive payroll finalization.</p>
+          <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); padding: 0.75rem; border-radius: 6px; max-width: 380px; margin: 1rem 0;">
+            📊 2026_Bonus_Allocation_Matrix.xlsm (Macro-Enabled Excel Spreadsheet)
+          </div>
+          <p style="font-size: 0.8rem; color: #f87171;">Note: You must click 'Enable Content / Macros' upon opening to load confidential encrypted cells.</p>
+        `,
+        flags: [
+          "Curiosity & Greed Bait: Exploits human curiosity regarding salary and compensation to provoke opening.",
+          "Macro-Enabled Extension: Uses '.xlsm' rather than standard '.xlsx'.",
+          "Coercing Macro Execution: Explicit instructions to 'Enable Content / Macros'—this triggers malicious Visual Basic for Applications (VBA) scripts that execute ransomware or Trojan downloaders in the background."
+        ],
+        safety: "Never open unsolicited macro-enabled documents (.docm, .xlsm). Modern enterprise HR departments share compensation statements through authenticated enterprise HRIS portals (Workday, ADP), not email attachments."
+      },
+      {
+        subject: "SECURITY ALERT: Immediate Account Lockdown Initiated on Chase Online",
+        vector: "BANKING CREDENTIAL HARVEST",
+        sender: "Chase Security Alert &lt;fraud-prevention@chase-security-update9.com&gt;",
+        replyTo: "fraud-prevention@chase-security-update9.com",
+        body: `
+          <p>Dear Valued Account Holder,</p>
+          <p>We detected unauthorized login attempts to your checking account originating from an unrecognized IP address in Bucharest, Romania on Nov 16, 2026.</p>
+          <p>For your protection, access to online banking, Zelle transfers, and debit card transactions has been temporarily suspended.</p>
+          <p style="margin: 1.5rem 0;">
+            <a href="javascript:void(0)" style="color: #38bdf8; text-decoration: underline; font-weight: bold;" title="Destination: https://chase-security-portal.online/login">
+              🛡️ Verify Your Identity & Restore Full Account Access
+            </a>
+          </p>
+          <p style="font-size: 0.8rem; color: #94a3b8;">JPMorgan Chase Bank, N.A. Member FDIC.</p>
+        `,
+        flags: [
+          "Fear & Alarmism: Fabricating foreign logins from foreign countries to trigger immediate anxiety.",
+          "Counterfeit Domain: 'chase-security-update9.com' is not operated by JPMorgan Chase (chase.com).",
+          "Universal Credential Prompt: Link leads to a replica login page that captures username, password, debit card PIN, and Social Security Number."
+        ],
+        safety: "If you receive an alarmist banking alert, do NOT click the link. Open your trusted Chase mobile banking app or type 'chase.com' manually into your browser address bar. Check your verified transaction history."
+      }
+    ];
+
+    function showEmailCase(idx, btnEl) {
+      // Update Tab Active
+      document.querySelectorAll('#emailTabsContainer button').forEach(b => {
+        b.className = 'btn btn-cyber-outline btn-sm';
+      });
+      if (btnEl) btnEl.className = 'btn btn-cyber-primary btn-sm';
+
+      const c = emailCases[idx];
+      document.getElementById('caseSubjectDisplay').innerText = c.subject;
+      document.getElementById('caseBadgeDisplay').innerText = c.vector;
+      document.getElementById('caseSenderDisplay').innerHTML = c.sender;
+      document.getElementById('caseReplyToDisplay').innerText = c.replyTo;
+      document.getElementById('caseBodyDisplay').innerHTML = c.body;
+
+      document.getElementById('caseFlagsList').innerHTML = c.flags.map(f => `<li>${f}</li>`).join('');
+      document.getElementById('caseSafetyAction').innerText = c.safety;
+
+      playCyberTone('click');
+    }
+
+    function continueToWebsites() {
+      markModuleCompleted('email_phishing');
+      playCyberTone('success');
+      setTimeout(() => {
+        window.location.href = '/fake-websites';
+      }, 350);
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      showEmailCase(0, document.querySelector('#emailTabsContainer button'));
+    });
+  </script>
+</body>
+</html>
+

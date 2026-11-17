@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Real-World Case Studies – PHISHGUARD</title>
+  <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/static/css/phishguard.css">
+</head>
+<body>
+
+  <!-- Main Navigation Bar -->
+  <nav class="navbar-phishguard">
+    <div class="container d-flex justify-content-between align-items-center flex-wrap gap-2">
+      <a href="/" class="brand-wrapper">
+        <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+        </svg>
+        <span>PHISHGUARD</span>
+        <span class="brand-badge">Security Training</span>
+      </a>
+
+      <div class="nav-links-wrapper">
+        <a href="/" class="nav-item-link">Home</a>
+        <a href="/fundamentals" class="nav-item-link">Fundamentals</a>
+        <a href="/emails" class="nav-item-link">Emails</a>
+        <a href="/fake-websites" class="nav-item-link">Fake Sites</a>
+        <a href="/social-engineering" class="nav-item-link">Social Eng.</a>
+        <a href="/case-studies" class="nav-item-link active">Case Studies</a>
+        <a href="/quiz" class="nav-item-link">Quiz</a>
+        <a href="/simulation-lab" class="nav-item-link">Sim Lab</a>
+        <a href="/safety-guide" class="nav-item-link">Safety Guide</a>
+        <a href="/final-assessment" class="nav-item-link">Assessment</a>
+        <a href="/dashboard" class="nav-item-link" style="color: #60a5fa; border-left: 1px solid var(--border-color); padding-left: 0.75rem;">Dashboard</a>
+        <button id="themeToggleBtn" class="theme-toggle-btn" onclick="togglePhishGuardTheme()" title="Toggle Light/Dark Theme"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg> <span>Dark</span></button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Global Training Progress Bar Ticker -->
+  <div class="nav-ticker-bar">
+    <div class="container d-flex justify-content-between align-items-center">
+      <span style="color: var(--text-muted);">Curriculum Progress: <strong id="navProgressText" style="color: var(--accent-blue-text);">0% Complete</strong></span>
+      <div class="nav-progress-track">
+        <div id="navProgressFill" class="nav-progress-fill"></div>
+      </div>
+    </div>
+  </div>
+
+  <main class="container py-5">
+    <div class="mb-5">
+      <span class="section-tag">PAGE 6 • FORENSIC INCIDENT ANALYSIS</span>
+      <h1 class="section-title">Real-World Case Studies</h1>
+      <p class="section-desc">
+        Examine 5 detailed educational case studies based on high-impact incident archetypes: Situation, High-Level Deception, Warning Signs, Consequences, and Preventive Actions.
+      </p>
+    </div>
+
+    <!-- 5 Case Studies Accordion / Cards -->
+    <div class="d-flex flex-column gap-4 mb-5">
+
+      <!-- Case Study 1: Bank Fraud Notification -->
+      <div class="cyber-card">
+        <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-3">
+          <div class="d-flex align-items-center gap-2">
+            <span class="cyber-badge badge-red">CASE STUDY 1</span>
+            <h3 class="text-white fw-bold mb-0">The Fake Bank Fraud Alert & AitM Reverse Proxy</h3>
+          </div>
+          <span class="text-muted" style="font-size: 0.85rem;">Vector: SMS Smishing + Reverse Proxy</span>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-lg-6">
+            <h6 style="color: #60a5fa; font-weight: 700;">1. The Situation:</h6>
+            <p class="text-muted" style="font-size: 0.9rem;">
+              An individual receives an urgent SMS at 7:30 PM: <em>"Wells Fargo Alert: Did you attempt a $1,450 Zelle transfer to Marcus T.? Reply YES or NO."</em> In panic, the user replies "NO". Immediately, an automated response states: <em>"Fraud stopped. Secure your account now at wellsfargo-security-session.com/auth"</em>.
+            </p>
+
+            <h6 style="color: #60a5fa; font-weight: 700;">2. Attacker's High-Level Deception:</h6>
+            <p class="text-muted" style="font-size: 0.9rem;">
+              The link points to an Adversary-in-the-Middle (AitM) reverse proxy server. The victim enters their username, password, and the 2FA SMS code received on their phone. The proxy forwards these credentials to the real bank in real time and intercepts the authenticated session cookie.
+            </p>
+          </div>
+
+          <div class="col-lg-6">
+            <div style="background: rgba(239, 68, 68, 0.08); border-left: 3px solid #ef4444; padding: 0.85rem; border-radius: 0 6px 6px 0; margin-bottom: 0.75rem;">
+              <strong style="color: #f87171; font-size: 0.85rem;">Key Warning Signs:</strong>
+              <ul class="text-muted" style="font-size: 0.85rem; margin: 0.25rem 0 0 1rem;">
+                <li>The SMS arrived from a random 10-digit phone number rather than the bank's official short code.</li>
+                <li>The domain <code>wellsfargo-security-session.com</code> is NOT <code>wellsfargo.com</code>.</li>
+              </ul>
+            </div>
+
+            <div style="background: rgba(245, 158, 11, 0.08); border-left: 3px solid #f59e0b; padding: 0.85rem; border-radius: 0 6px 6px 0; margin-bottom: 0.75rem;">
+              <strong style="color: #fbbf24; font-size: 0.85rem;">Potential Consequences:</strong>
+              <p class="text-muted" style="font-size: 0.85rem; margin: 0.25rem 0 0 0;">
+                Complete checking account drain via unauthorized external wires; compromised identity profiles.
+              </p>
+            </div>
+
+            <div style="background: rgba(16, 185, 129, 0.08); border-left: 3px solid #10b981; padding: 0.85rem; border-radius: 0 6px 6px 0;">
+              <strong style="color: #34d399; font-size: 0.85rem;">Correct Preventive Action:</strong>
+              <p class="text-muted" style="font-size: 0.85rem; margin: 0.25rem 0 0 0;">
+                Never click links in bank fraud SMS messages. Open your verified mobile banking app directly or call the phone number printed on the back of your physical debit card.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Case Study 2: Delivery Package SMS -->
+      <div class="cyber-card">
+        <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-3">
+          <div class="d-flex align-items-center gap-2">
+            <span class="cyber-badge badge-amber">CASE STUDY 2</span>
+            <h3 class="text-white fw-bold mb-0">Delivery Package "Customs Fee" Credential Harvesting</h3>
+          </div>
+          <span class="text-muted" style="font-size: 0.85rem;">Vector: Smishing / Credit Card Scraping</span>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-lg-6">
+            <h6 style="color: #60a5fa; font-weight: 700;">1. The Situation:</h6>
+            <p class="text-muted" style="font-size: 0.9rem;">
+              During the holiday shopping season, a consumer receives a text message: <em>"USPS Notice: Package #9201 cannot be dispatched to your street address due to an unpaid $1.85 import duty. Update postal details at: usps-reschedule-ship.info"</em>.
+            </p>
+
+            <h6 style="color: #60a5fa; font-weight: 700;">2. Attacker's High-Level Deception:</h6>
+            <p class="text-muted" style="font-size: 0.9rem;">
+              The landing page features copied USPS logos, tracking progress bars, and an address entry form. When the victim enters their credit card to pay the nominal $1.85 fee, the site captures full credit card numbers, billing addresses, CVVs, and even prompts for phone numbers to intercept banking OTPs.
+            </p>
+          </div>
+
+          <div class="col-lg-6">
+            <div style="background: rgba(239, 68, 68, 0.08); border-left: 3px solid #ef4444; padding: 0.85rem; border-radius: 0 6px 6px 0; margin-bottom: 0.75rem;">
+              <strong style="color: #f87171; font-size: 0.85rem;">Key Warning Signs:</strong>
+              <ul class="text-muted" style="font-size: 0.85rem; margin: 0.25rem 0 0 1rem;">
+                <li>The tracking number is generic and does not match any confirmed orders.</li>
+                <li>The website uses a generic <code>.info</code> TLD instead of <code>usps.com</code>.</li>
+              </ul>
+            </div>
+
+            <div style="background: rgba(245, 158, 11, 0.08); border-left: 3px solid #f59e0b; padding: 0.85rem; border-radius: 0 6px 6px 0; margin-bottom: 0.75rem;">
+              <strong style="color: #fbbf24; font-size: 0.85rem;">Potential Consequences:</strong>
+              <p class="text-muted" style="font-size: 0.85rem; margin: 0.25rem 0 0 0;">
+                Stolen credit card credentials sold on dark web marketplaces; recurring fraudulent micro-charges.
+              </p>
+            </div>
+
+            <div style="background: rgba(16, 185, 129, 0.08); border-left: 3px solid #10b981; padding: 0.85rem; border-radius: 0 6px 6px 0;">
+              <strong style="color: #34d399; font-size: 0.85rem;">Correct Preventive Action:</strong>
+              <p class="text-muted" style="font-size: 0.85rem; margin: 0.25rem 0 0 0;">
+                Postal couriers do not require small debit fees via random SMS texts. Manually navigate to <code>usps.com</code> or <code>fedex.com</code> and check the tracking number in the official search box.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Case Study 3: Fake Job Offer Scam -->
+      <div class="cyber-card">
+        <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-3">
+          <div class="d-flex align-items-center gap-2">
+            <span class="cyber-badge badge-purple">CASE STUDY 3</span>
+            <h3 class="text-white fw-bold mb-0">The Remote Work "Home Office Equipment" Scam</h3>
+          </div>
+          <span class="text-muted" style="font-size: 0.85rem;">Vector: LinkedIn OSINT + Fake Check / Advance Fee</span>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-lg-6">
+            <h6 style="color: #60a5fa; font-weight: 700;">1. The Situation:</h6>
+            <p class="text-muted" style="font-size: 0.9rem;">
+              A recent university graduate receives a direct message on LinkedIn from an "Executive Talent Recruiter" offering an interview-free remote data analyst position paying $45/hour. After a text interview on Telegram, they receive a formal employment agreement and a digital check for $3,500 to "buy home office equipment from an approved vendor".
+            </p>
+
+            <h6 style="color: #60a5fa; font-weight: 700;">2. Attacker's High-Level Deception:</h6>
+            <p class="text-muted" style="font-size: 0.9rem;">
+              The digital check is counterfeit. Under U.S. banking laws, banks make funds available in 1-2 days before the check officially clears (which can take 7-10 business days). The attacker instructs the victim to immediately wire $3,000 via Zelle to their "approved equipment vendor". When the check inevitably bounces 10 days later, the victim owes the bank $3,000 of their own money.
+            </p>
+          </div>
+
+          <div class="col-lg-6">
+            <div style="background: rgba(239, 68, 68, 0.08); border-left: 3px solid #ef4444; padding: 0.85rem; border-radius: 0 6px 6px 0; margin-bottom: 0.75rem;">
+              <strong style="color: #f87171; font-size: 0.85rem;">Key Warning Signs:</strong>
+              <ul class="text-muted" style="font-size: 0.85rem; margin: 0.25rem 0 0 1rem;">
+                <li>No face-to-face or video interview was conducted; conducted purely via messaging apps.</li>
+                <li>Requirement to deposit an upfront check and wire money back to an "approved vendor".</li>
+              </ul>
+            </div>
+
+            <div style="background: rgba(245, 158, 11, 0.08); border-left: 3px solid #f59e0b; padding: 0.85rem; border-radius: 0 6px 6px 0; margin-bottom: 0.75rem;">
+              <strong style="color: #fbbf24; font-size: 0.85rem;">Potential Consequences:</strong>
+              <p class="text-muted" style="font-size: 0.85rem; margin: 0.25rem 0 0 0;">
+                Thousands of dollars in personal financial losses, bank account closures for check fraud, and stolen Social Security numbers from onboarding forms.
+              </p>
+            </div>
+
+            <div style="background: rgba(16, 185, 129, 0.08); border-left: 3px solid #10b981; padding: 0.85rem; border-radius: 0 6px 6px 0;">
+              <strong style="color: #34d399; font-size: 0.85rem;">Correct Preventive Action:</strong>
+              <p class="text-muted" style="font-size: 0.85rem; margin: 0.25rem 0 0 0;">
+                Legitimate employers supply hardware directly or reimburse through established corporate payroll accounts. Never accept checks from strangers with instructions to wire back funds.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Case Study 4: University Account Verification -->
+      <div class="cyber-card">
+        <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-3">
+          <div class="d-flex align-items-center gap-2">
+            <span class="cyber-badge badge-cyan">CASE STUDY 4</span>
+            <h3 class="text-white fw-bold mb-0">University Portal Account & Financial Aid Phishing</h3>
+          </div>
+          <span class="text-muted" style="font-size: 0.85rem;">Vector: Campus Portal Clone + OAuth App Grant</span>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-lg-6">
+            <h6 style="color: #60a5fa; font-weight: 700;">1. The Situation:</h6>
+            <p class="text-muted" style="font-size: 0.9rem;">
+              A university student receives an email: <em>"Financial Aid Office: Your spring tuition grant has been re-calculated. Log into the Student Portal within 48 hours to accept your $2,400 disbursement"</em>.
+            </p>
+
+            <h6 style="color: #60a5fa; font-weight: 700;">2. Attacker's High-Level Deception:</h6>
+            <p class="text-muted" style="font-size: 0.9rem;">
+              The link mimics the university single sign-on (SSO) login page. After entering credentials, the site prompts the user to grant permissions to an OAuth application titled "University Grant Portal". Once granted, the rogue application gains persistent offline access to the student's email and OneDrive files without needing their password again.
+            </p>
+          </div>
+
+          <div class="col-lg-6">
+            <div style="background: rgba(239, 68, 68, 0.08); border-left: 3px solid #ef4444; padding: 0.85rem; border-radius: 0 6px 6px 0; margin-bottom: 0.75rem;">
+              <strong style="color: #f87171; font-size: 0.85rem;">Key Warning Signs:</strong>
+              <ul class="text-muted" style="font-size: 0.85rem; margin: 0.25rem 0 0 1rem;">
+                <li>The URL uses an external domain e.g. <code>campus-tuition-portal.net</code> instead of <code>university.edu</code>.</li>
+                <li>The prompt asks for broad OAuth application consent to read emails and files.</li>
+              </ul>
+            </div>
+
+            <div style="background: rgba(245, 158, 11, 0.08); border-left: 3px solid #f59e0b; padding: 0.85rem; border-radius: 0 6px 6px 0; margin-bottom: 0.75rem;">
+              <strong style="color: #fbbf24; font-size: 0.85rem;">Potential Consequences:</strong>
+              <p class="text-muted" style="font-size: 0.85rem; margin: 0.25rem 0 0 0;">
+                The attacker changes the student's direct deposit routing details, stealing real financial aid grants; student inbox used to launch further campus-wide phishing campaigns.
+              </p>
+            </div>
+
+            <div style="background: rgba(16, 185, 129, 0.08); border-left: 3px solid #10b981; padding: 0.85rem; border-radius: 0 6px 6px 0;">
+              <strong style="color: #34d399; font-size: 0.85rem;">Correct Preventive Action:</strong>
+              <p class="text-muted" style="font-size: 0.85rem; margin: 0.25rem 0 0 0;">
+                Always verify financial aid status by logging in via your pre-saved campus bookmark. Carefully scrutinize third-party OAuth app authorization screens.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Case Study 5: Fake Customer Support -->
+      <div class="cyber-card">
+        <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-3">
+          <div class="d-flex align-items-center gap-2">
+            <span class="cyber-badge badge-green">CASE STUDY 5</span>
+            <h3 class="text-white fw-bold mb-0">Search Engine Ad Poisoning & Fake Tech Support</h3>
+          </div>
+          <span class="text-muted" style="font-size: 0.85rem;">Vector: SEO Ad Spoofing + Remote Desktop (AnyDesk)</span>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-lg-6">
+            <h6 style="color: #60a5fa; font-weight: 700;">1. The Situation:</h6>
+            <p class="text-muted" style="font-size: 0.9rem;">
+              An employee trying to install printer drivers searches Google for "HP Printer Support phone number". The top sponsored search result displays an official-looking ad leading to a toll-free number. The caller is greeted by someone claiming to be a "Certified Systems Engineer".
+            </p>
+
+            <h6 style="color: #60a5fa; font-weight: 700;">2. Attacker's High-Level Deception:</h6>
+            <p class="text-muted" style="font-size: 0.9rem;">
+              The technician convinces the user to download AnyDesk or TeamViewer to "diagnose the network". Once connected, the attacker opens Windows Event Viewer, points to harmless informational logs, and claims the computer is infected with foreign spyware. They demand $299 for an "antivirus cleanup subscription".
+            </p>
+          </div>
+
+          <div class="col-lg-6">
+            <div style="background: rgba(239, 68, 68, 0.08); border-left: 3px solid #ef4444; padding: 0.85rem; border-radius: 0 6px 6px 0; margin-bottom: 0.75rem;">
+              <strong style="color: #f87171; font-size: 0.85rem;">Key Warning Signs:</strong>
+              <ul class="text-muted" style="font-size: 0.85rem; margin: 0.25rem 0 0 1rem;">
+                <li>The search result was a paid "Sponsored" ad leading to an unaffiliated domain.</li>
+                <li>The support technician insists on remote computer access for a routine driver download.</li>
+              </ul>
+            </div>
+
+            <div style="background: rgba(245, 158, 11, 0.08); border-left: 3px solid #f59e0b; padding: 0.85rem; border-radius: 0 6px 6px 0; margin-bottom: 0.75rem;">
+              <strong style="color: #fbbf24; font-size: 0.85rem;">Potential Consequences:</strong>
+              <p class="text-muted" style="font-size: 0.85rem; margin: 0.25rem 0 0 0;">
+                Full remote workstation compromise, installation of persistence backdoors, and extortion fees.
+              </p>
+            </div>
+
+            <div style="background: rgba(16, 185, 129, 0.08); border-left: 3px solid #10b981; padding: 0.85rem; border-radius: 0 6px 6px 0;">
+              <strong style="color: #34d399; font-size: 0.85rem;">Correct Preventive Action:</strong>
+              <p class="text-muted" style="font-size: 0.85rem; margin: 0.25rem 0 0 0;">
+                Never click sponsored search engine ads for technical support numbers. Always navigate to the official manufacturer domain (e.g. <code>hp.com/support</code>) manually.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Navigation & Next Steps -->
+    <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 pt-4 border-top border-secondary">
+      <a href="/social-engineering" class="btn btn-cyber-outline">← Back to Social Engineering</a>
+      <button class="btn btn-cyber-primary" onclick="continueToQuiz()">
+        Mark Module 6 Completed & Take 15-Question Quiz →
+      </button>
+    </div>
+  </main>
+
+  <footer class="cyber-footer">
+    <div class="container text-center text-muted" style="font-size: 0.85rem;">
+      PHISHGUARD Educational Cybersecurity Training Platform • College Capstone Project
+    </div>
+  </footer>
+
+  <script src="/static/js/app.js"></script>
+  <script>
+    function continueToQuiz() {
+      markModuleCompleted('case_studies');
+      playCyberTone('success');
+      setTimeout(() => {
+        window.location.href = '/quiz';
+      }, 350);
+    }
+  </script>
+</body>
+</html>
+

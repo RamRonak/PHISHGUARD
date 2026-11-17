@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PHISHGUARD – Phishing Awareness & Cybersecurity Training Platform</title>
+  <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/static/css/phishguard.css">
+</head>
+<body>
+
+  <!-- Main Navigation Bar -->
+  <nav class="navbar-phishguard">
+    <div class="container d-flex justify-content-between align-items-center flex-wrap gap-2">
+      <a href="/" class="brand-wrapper">
+        <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+        </svg>
+        <span>PHISHGUARD</span>
+        <span class="brand-badge">Security Training</span>
+      </a>
+
+      <div class="nav-links-wrapper">
+        <a href="/" class="nav-item-link active">Home</a>
+        <a href="/fundamentals" class="nav-item-link">Fundamentals</a>
+        <a href="/emails" class="nav-item-link">Emails</a>
+        <a href="/fake-websites" class="nav-item-link">Fake Sites</a>
+        <a href="/social-engineering" class="nav-item-link">Social Eng.</a>
+        <a href="/case-studies" class="nav-item-link">Case Studies</a>
+        <a href="/quiz" class="nav-item-link">Quiz</a>
+        <a href="/simulation-lab" class="nav-item-link">Sim Lab</a>
+        <a href="/safety-guide" class="nav-item-link">Safety Guide</a>
+        <a href="/final-assessment" class="nav-item-link">Assessment</a>
+        <a href="/dashboard" class="nav-item-link" style="color: #60a5fa; border-left: 1px solid var(--border-color); padding-left: 0.75rem;">Dashboard</a>
+        <button id="themeToggleBtn" class="theme-toggle-btn" onclick="togglePhishGuardTheme()" title="Toggle Light/Dark Theme"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg> <span>Dark</span></button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Global Training Progress Bar Ticker -->
+  <div class="nav-ticker-bar">
+    <div class="container d-flex justify-content-between align-items-center">
+      <span style="color: var(--text-muted);">Curriculum Progress: <strong id="navProgressText" style="color: var(--accent-blue-text);">0% Complete</strong></span>
+      <div class="nav-progress-track">
+        <div id="navProgressFill" class="nav-progress-fill"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hero / Landing Section -->
+  <main class="container py-5">
+    <section class="hero-wrapper mb-5">
+      <div class="row align-items-center">
+        <div class="col-lg-8">
+          <span class="cyber-badge badge-cyan mb-3">Cybersecurity Awareness & Defense Platform</span>
+          <h1 class="hero-title">Think Before You Click.</h1>
+          <p class="section-desc mb-4">
+            Master the psychological triggers, deceptive email indicators, and counterfeit web techniques weaponized by modern cybercriminals. Strengthen your personal security habits and help protect your organization from online fraud.
+          </p>
+          <div class="d-flex flex-wrap gap-3">
+            <a href="/fundamentals" class="btn btn-cyber-primary btn-lg">
+              Start Training
+            </a>
+            <a href="/dashboard" class="btn btn-cyber-outline btn-lg">
+              Browse Modules & Dashboard
+            </a>
+            <a href="/simulation-lab" class="btn btn-cyber-outline btn-lg" style="border-color: #3b82f6;">
+              Phishing Simulation Lab
+            </a>
+          </div>
+        </div>
+        <div class="col-lg-4 text-center mt-4 mt-lg-0">
+          <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 2.25rem 1.5rem; box-shadow: var(--shadow-md);">
+            <div style="width: 60px; height: 60px; margin: 0 auto 1.25rem; background: var(--accent-blue-subtle); border: 1px solid var(--accent-blue-border); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent-blue)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                <path d="M12 8v4"></path>
+                <path d="M12 16h.01"></path>
+              </svg>
+            </div>
+            <h5 class="text-white fw-bold mb-2">Zero-Trust Verification</h5>
+            <p class="text-muted" style="font-size: 0.85rem; margin: 0; line-height: 1.5;">
+              Verify every sender header. Inspect every destination domain. Never submit credentials or approve MFA requests without out-of-band confirmation.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Awareness Statistics Banner (Clearly Identified Illustrative Data) -->
+      <div class="stats-banner">
+        <div class="stat-item">
+          <div class="stat-val">3.4 Billion</div>
+          <div class="stat-label">Estimated Daily Phishing Emails</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-val">91%</div>
+          <div class="stat-label">Breaches Involving Phishing Initial Access</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-val">82%</div>
+          <div class="stat-label">Phishing Sites Featuring Valid SSL</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-val">$4.88M</div>
+          <div class="stat-label">Average Global Breach Remediation Cost</div>
+        </div>
+      </div>
+      <div class="stat-disclaimer">
+        *Note: Statistics represent aggregated industry benchmark estimates presented for illustrative cybersecurity educational awareness purposes.
+      </div>
+    </section>
+
+    <!-- Introduction to Phishing Attacks Section -->
+    <section class="mb-5">
+      <div class="row g-4">
+        <div class="col-lg-6">
+          <div class="cyber-card h-100">
+            <div class="card-icon-bubble bubble-amber">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+                <line x1="12" y1="9" x2="12" y2="13"></line>
+                <line x1="12" y1="17" x2="12.01" y2="17"></line>
+              </svg>
+            </div>
+            <h3 class="text-white fw-bold mb-3">Why Attackers Target Humans</h3>
+            <p class="text-muted">
+              Modern enterprise organizations invest heavily in firewalls, endpoint detection software, and cryptographic data protection. Because breaking modern 256-bit encryption is practically infeasible, cybercriminals deliberately target <strong>human cognitive vulnerabilities</strong>.
+            </p>
+            <ul class="text-muted" style="padding-left: 1.25rem; font-size: 0.95rem; line-height: 1.7;">
+              <li><strong>Psychological Manipulation:</strong> Attackers fabricate urgency, fear of penalties, or executive authority to bypass rational skepticism.</li>
+              <li><strong>Asymmetrical Economics:</strong> Millions of automated lures can be dispatched in seconds at near-zero marginal cost.</li>
+              <li><strong>Language Model Weaponization:</strong> Modern AI tools allow attackers to compose grammatically flawless, highly contextual messages in any language.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="cyber-card h-100">
+            <div class="card-icon-bubble bubble-green">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                <polyline points="9 11 12 14 22 4"></polyline>
+              </svg>
+            </div>
+            <h3 class="text-white fw-bold mb-3">Benefits of Security Awareness Training</h3>
+            <p class="text-muted">
+              Structured cybersecurity training converts users from an organization's most targeted attack surface into an active, resilient <strong>Human Firewall</strong>.
+            </p>
+            <ul class="text-muted" style="padding-left: 1.25rem; font-size: 0.95rem; line-height: 1.7;">
+              <li><strong>Account & Identity Safeguards:</strong> Protects banking logins, corporate cloud tenants, and private credentials from unauthorized takeover.</li>
+              <li><strong>Ransomware Prevention:</strong> Thwarts initial entry vectors before malicious loaders or encryption payloads can spread across networks.</li>
+              <li><strong>Proactive Incident Reporting:</strong> Empowers learners to report suspicious messages within minutes, enabling rapid containment by IT and SOC teams.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Complete 10-Module Training Curriculum Grid -->
+    <section class="mb-5">
+      <div class="mb-4">
+        <span class="section-tag">CURRICULUM DIRECTORY</span>
+        <h2 class="section-title">Explore All 10 Training Modules</h2>
+        <p class="section-desc">Complete each structured chapter to build defensive competence and unlock your verifiable Certificate of Completion.</p>
+      </div>
+
+      <div class="row g-4">
+        <!-- Module 1 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="cyber-card h-100 d-flex flex-column justify-content-between">
+            <div>
+              <span class="cyber-badge badge-cyan mb-2">Module 1</span>
+              <h4 class="text-white fw-bold">Platform Overview</h4>
+              <p class="text-muted" style="font-size: 0.9rem;">
+                Foundations of defensive awareness, threat landscape statistics, and zero-trust concepts.
+              </p>
+            </div>
+            <a href="/" class="btn btn-cyber-outline btn-sm mt-3">Current Module</a>
+          </div>
+        </div>
+
+        <!-- Module 2 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="cyber-card h-100 d-flex flex-column justify-content-between">
+            <div>
+              <span class="cyber-badge badge-cyan mb-2">Module 2</span>
+              <h4 class="text-white fw-bold">Phishing Fundamentals</h4>
+              <p class="text-muted" style="font-size: 0.9rem;">
+                Definitions, attack lifecycles, and 6 core types: Email, Spear, Whaling, Smishing, Vishing, and Clone Phishing.
+              </p>
+            </div>
+            <a href="/fundamentals" class="btn btn-cyber-primary btn-sm mt-3">Start Module 2 →</a>
+          </div>
+        </div>
+
+        <!-- Module 3 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="cyber-card h-100 d-flex flex-column justify-content-between">
+            <div>
+              <span class="cyber-badge badge-cyan mb-2">Module 3</span>
+              <h4 class="text-white fw-bold">Recognizing Emails</h4>
+              <p class="text-muted" style="font-size: 0.9rem;">
+                7 red flag indicators and 5 interactive fictional email investigations with forensic callouts.
+              </p>
+            </div>
+            <a href="/emails" class="btn btn-cyber-outline btn-sm mt-3">Inspect Emails →</a>
+          </div>
+        </div>
+
+        <!-- Module 4 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="cyber-card h-100 d-flex flex-column justify-content-between">
+            <div>
+              <span class="cyber-badge badge-cyan mb-2">Module 4</span>
+              <h4 class="text-white fw-bold">Fake Website Detection</h4>
+              <p class="text-muted" style="font-size: 0.9rem;">
+                Typosquatting, lookalike domains, padlock limitations, and an interactive safe URL decoder.
+              </p>
+            </div>
+            <a href="/fake-websites" class="btn btn-cyber-outline btn-sm mt-3">Analyze URLs →</a>
+          </div>
+        </div>
+
+        <!-- Module 5 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="cyber-card h-100 d-flex flex-column justify-content-between">
+            <div>
+              <span class="cyber-badge badge-cyan mb-2">Module 5</span>
+              <h4 class="text-white fw-bold">Social Engineering</h4>
+              <p class="text-muted" style="font-size: 0.9rem;">
+                Psychological levers: Urgency, Fear, Authority, Greed, Curiosity, Pretexting, and Impersonation.
+              </p>
+            </div>
+            <a href="/social-engineering" class="btn btn-cyber-outline btn-sm mt-3">Explore Psychology →</a>
+          </div>
+        </div>
+
+        <!-- Module 6 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="cyber-card h-100 d-flex flex-column justify-content-between">
+            <div>
+              <span class="cyber-badge badge-cyan mb-2">Module 6</span>
+              <h4 class="text-white fw-bold">Real-World Case Studies</h4>
+              <p class="text-muted" style="font-size: 0.9rem;">
+                Forensic reviews of bank alert fraud, parcel SMS, job scams, university portals, and support scams.
+              </p>
+            </div>
+            <a href="/case-studies" class="btn btn-cyber-outline btn-sm mt-3">Review Cases →</a>
+          </div>
+        </div>
+
+        <!-- Module 7 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="cyber-card h-100 d-flex flex-column justify-content-between">
+            <div>
+              <span class="cyber-badge badge-cyan mb-2">Module 7</span>
+              <h4 class="text-white fw-bold">15-Question Quiz</h4>
+              <p class="text-muted" style="font-size: 0.9rem;">
+                Comprehensive knowledge assessment featuring Beginner, Intermediate, and Advanced scenarios.
+              </p>
+            </div>
+            <a href="/quiz" class="btn btn-cyber-primary btn-sm mt-3">Take 15-Q Quiz →</a>
+          </div>
+        </div>
+
+        <!-- Module 8 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="cyber-card h-100 d-flex flex-column justify-content-between">
+            <div>
+              <span class="cyber-badge badge-cyan mb-2">Module 8</span>
+              <h4 class="text-white fw-bold">Simulation Lab</h4>
+              <p class="text-muted" style="font-size: 0.9rem;">
+                Safe offline laboratory. Inspect mock emails, uncover detective red-flags, and submit verdicts.
+              </p>
+            </div>
+            <a href="/simulation-lab" class="btn btn-cyber-outline btn-sm mt-3">Enter Lab →</a>
+          </div>
+        </div>
+
+        <!-- Module 9 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="cyber-card h-100 d-flex flex-column justify-content-between">
+            <div>
+              <span class="cyber-badge badge-cyan mb-2">Module 9</span>
+              <h4 class="text-white fw-bold">Safety Guide & Checklist</h4>
+              <p class="text-muted" style="font-size: 0.9rem;">
+                10 core defensive habits, out-of-band verification guidelines, and a downloadable plain-text checklist.
+              </p>
+            </div>
+            <a href="/safety-guide" class="btn btn-cyber-outline btn-sm mt-3">View Guide →</a>
+          </div>
+        </div>
+
+        <!-- Module 10 -->
+        <div class="col-md-12 col-lg-12">
+          <div class="cyber-card" style="border: 1px solid var(--accent-blue-border); background: linear-gradient(180deg, #162035 0%, #121929 100%);">
+            <div class="row align-items-center">
+              <div class="col-md-8">
+                <span class="cyber-badge badge-green mb-2">Module 10 • Capstone Certification</span>
+                <h3 class="text-white fw-bold">Final Assessment & Certificate of Completion</h3>
+                <p class="text-muted" style="margin-bottom: 0;">
+                  Demonstrate complete defensive mastery. Score 80% or higher on the 10-question final exam to generate your official, verifiable PHISHGUARD Certificate of Completion.
+                </p>
+              </div>
+              <div class="col-md-4 text-md-end mt-3 mt-md-0">
+                <a href="/final-assessment" class="btn btn-cyber-success btn-lg">
+                  Begin Final Assessment
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="cyber-footer">
+    <div class="container">
+      <div class="row g-4 mb-4">
+        <div class="col-lg-4">
+          <div class="d-flex align-items-center gap-2 mb-3">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent-blue)" stroke-width="2.5">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            </svg>
+            <span class="text-white fw-bold fs-5">PHISHGUARD</span>
+          </div>
+          <p class="text-muted" style="font-size: 0.85rem; line-height: 1.6;">
+            Educational cybersecurity awareness and defensive training platform. Dedicated to strengthening human resilience against social engineering deception.
+          </p>
+          <div class="cyber-badge badge-cyan" style="font-size: 0.7rem;">Cybersecurity Educational Project</div>
+        </div>
+        <div class="col-lg-4">
+          <h6 class="text-white fw-bold mb-3 text-uppercase" style="letter-spacing: 0.05em; font-size: 0.8rem;">Curriculum Directory</h6>
+          <div class="row" style="font-size: 0.85rem;">
+            <div class="col-6">
+              <a href="/fundamentals" class="footer-link">Fundamentals</a>
+              <a href="/emails" class="footer-link">Email Analysis</a>
+              <a href="/fake-websites" class="footer-link">Fake Websites</a>
+              <a href="/social-engineering" class="footer-link">Social Eng.</a>
+              <a href="/case-studies" class="footer-link">Case Studies</a>
+            </div>
+            <div class="col-6">
+              <a href="/quiz" class="footer-link">15-Q Quiz</a>
+              <a href="/simulation-lab" class="footer-link">Simulation Lab</a>
+              <a href="/safety-guide" class="footer-link">Safety Guide</a>
+              <a href="/final-assessment" class="footer-link">Final Exam</a>
+              <a href="/dashboard" class="footer-link">My Dashboard</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <h6 class="text-white fw-bold mb-3 text-uppercase" style="letter-spacing: 0.05em; font-size: 0.8rem;">Educational Notice</h6>
+          <p class="text-muted" style="font-size: 0.8rem; line-height: 1.6;">
+            All examples, email headers, mock websites, and scenarios on this platform are strictly fictional, non-deliverable educational samples designed exclusively for defensive awareness training.
+          </p>
+          <div class="text-dim" style="font-size: 0.75rem;">
+            © 2026 PHISHGUARD. Free for educational awareness and academic demonstration.
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/static/js/app.js"></script>
+</body>
+</html>

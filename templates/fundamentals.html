@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Phishing Fundamentals – PHISHGUARD</title>
+  <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/static/css/phishguard.css">
+</head>
+<body>
+
+  <!-- Main Navigation Bar -->
+  <nav class="navbar-phishguard">
+    <div class="container d-flex justify-content-between align-items-center flex-wrap gap-2">
+      <a href="/" class="brand-wrapper">
+        <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+        </svg>
+        <span>PHISHGUARD</span>
+        <span class="brand-badge">Security Training</span>
+      </a>
+
+      <div class="nav-links-wrapper">
+        <a href="/" class="nav-item-link">Home</a>
+        <a href="/fundamentals" class="nav-item-link active">Fundamentals</a>
+        <a href="/emails" class="nav-item-link">Emails</a>
+        <a href="/fake-websites" class="nav-item-link">Fake Sites</a>
+        <a href="/social-engineering" class="nav-item-link">Social Eng.</a>
+        <a href="/case-studies" class="nav-item-link">Case Studies</a>
+        <a href="/quiz" class="nav-item-link">Quiz</a>
+        <a href="/simulation-lab" class="nav-item-link">Sim Lab</a>
+        <a href="/safety-guide" class="nav-item-link">Safety Guide</a>
+        <a href="/final-assessment" class="nav-item-link">Assessment</a>
+        <a href="/dashboard" class="nav-item-link" style="color: #60a5fa; border-left: 1px solid var(--border-color); padding-left: 0.75rem;">Dashboard</a>
+        <button id="themeToggleBtn" class="theme-toggle-btn" onclick="togglePhishGuardTheme()" title="Toggle Light/Dark Theme"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg> <span>Dark</span></button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Global Training Progress Bar Ticker -->
+  <div class="nav-ticker-bar">
+    <div class="container d-flex justify-content-between align-items-center">
+      <span style="color: var(--text-muted);">Curriculum Progress: <strong id="navProgressText" style="color: var(--accent-blue-text);">0% Complete</strong></span>
+      <div class="nav-progress-track">
+        <div id="navProgressFill" class="nav-progress-fill"></div>
+      </div>
+    </div>
+  </div>
+
+  <main class="container py-5">
+    <div class="mb-5">
+      <span class="section-tag">PAGE 2 • CORE KNOWLEDGE</span>
+      <h1 class="section-title">Phishing Fundamentals & Attack Taxonomy</h1>
+      <p class="section-desc">
+        Understand the core definition, high-level lifecycle mechanisms, attacker motivations, and the 6 primary categories of phishing.
+      </p>
+    </div>
+
+    <!-- What is Phishing & Lifecycle Section -->
+    <div class="row g-4 mb-5">
+      <div class="col-lg-7">
+        <div class="cyber-card h-100">
+          <div class="card-icon-bubble bubble-blue">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+              <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+            </svg>
+          </div>
+          <h3 class="text-white fw-bold mb-3">What is Phishing?</h3>
+          <p class="text-muted">
+            <strong>Phishing</strong> is a form of social engineering where cybercriminals deceive targets into taking unsafe actions—such as clicking malicious links, disclosing confidential credentials, opening infected attachments, or wiring funds—by masquerading as trustworthy individuals, organizations, or services.
+          </p>
+          <p class="text-muted">
+            Unlike malware that exploits software code flaws (such as buffer overflows), phishing exploits <strong>human cognitive vulnerabilities</strong>: trust, urgency, fear, helpfulness, and curiosity.
+          </p>
+          <div style="background: rgba(37, 99, 235, 0.08); border-left: 3px solid var(--accent-blue); padding: 1rem; border-radius: 0 var(--radius-sm) var(--radius-sm) 0;">
+            <strong style="color: #60a5fa;">Key Takeaway:</strong> Phishing does not break technical encryption. It tricks the authorized human keyholder into handing over the keys voluntarily.
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-5">
+        <div class="cyber-card h-100">
+          <div class="card-icon-bubble bubble-amber">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="22" y1="12" x2="18" y2="12"></line>
+              <line x1="6" y1="12" x2="2" y2="12"></line>
+              <line x1="12" y1="6" x2="12" y2="2"></line>
+              <line x1="12" y1="22" x2="12" y2="18"></line>
+            </svg>
+          </div>
+          <h3 class="text-white fw-bold mb-3">Why Attackers Use Phishing</h3>
+          <ul class="text-muted" style="padding-left: 1.25rem; font-size: 0.95rem; line-height: 1.8;">
+            <li><strong>Low Cost, High Return:</strong> Millions of emails can be dispatched in seconds with negligible infrastructure costs.</li>
+            <li><strong>Bypasses Network Perimeter Defenses:</strong> Legitimate email channels and authorized employee logins bypass external firewalls.</li>
+            <li><strong>Credential Theft Over Code Exploits:</strong> Stolen valid credentials allow attackers to simply "log in" rather than hack in.</li>
+            <li><strong>Entry Point for Advanced Ransomware:</strong> 90%+ of multi-million dollar ransomware attacks originate from a phishing foothold.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- High-Level Mechanism: The 6-Phase Lifecycle -->
+    <section class="mb-5">
+      <div class="mb-4">
+        <span class="section-tag">ATTACK ANATOMY</span>
+        <h2 class="section-title" style="font-size: 1.75rem;">How Phishing Attacks Work (The 6-Phase Lifecycle)</h2>
+      </div>
+
+      <div class="row g-3">
+        <div class="col-md-4 col-lg-2">
+          <div class="cyber-card h-100 text-center p-3">
+            <div style="font-size: 1.5rem; color: #60a5fa; font-weight: 800; margin-bottom: 0.5rem;">01</div>
+            <h6 class="text-white fw-bold">Reconnaissance</h6>
+            <p class="text-muted" style="font-size: 0.75rem; margin: 0;">Attackers gather targets from LinkedIn, leaks, and company websites.</p>
+          </div>
+        </div>
+        <div class="col-md-4 col-lg-2">
+          <div class="cyber-card h-100 text-center p-3">
+            <div style="font-size: 1.5rem; color: #60a5fa; font-weight: 800; margin-bottom: 0.5rem;">02</div>
+            <h6 class="text-white fw-bold">Weaponization</h6>
+            <p class="text-muted" style="font-size: 0.75rem; margin: 0;">Cloning legitimate websites, registering lookalike domains, forging headers.</p>
+          </div>
+        </div>
+        <div class="col-md-4 col-lg-2">
+          <div class="cyber-card h-100 text-center p-3">
+            <div style="font-size: 1.5rem; color: #60a5fa; font-weight: 800; margin-bottom: 0.5rem;">03</div>
+            <h6 class="text-white fw-bold">Delivery</h6>
+            <p class="text-muted" style="font-size: 0.75rem; margin: 0;">Transmitting lure via email, SMS, phone call, or QR code.</p>
+          </div>
+        </div>
+        <div class="col-md-4 col-lg-2">
+          <div class="cyber-card h-100 text-center p-3">
+            <div style="font-size: 1.5rem; color: #60a5fa; font-weight: 800; margin-bottom: 0.5rem;">04</div>
+            <h6 class="text-white fw-bold">Psychological Trigger</h6>
+            <p class="text-muted" style="font-size: 0.75rem; margin: 0;">Inducing urgency, fear, or reward to bypass critical verification.</p>
+          </div>
+        </div>
+        <div class="col-md-4 col-lg-2">
+          <div class="cyber-card h-100 text-center p-3">
+            <div style="font-size: 1.5rem; color: #60a5fa; font-weight: 800; margin-bottom: 0.5rem;">05</div>
+            <h6 class="text-white fw-bold">Exploitation</h6>
+            <p class="text-muted" style="font-size: 0.75rem; margin: 0;">Victim submits password/OTP or downloads malicious archive.</p>
+          </div>
+        </div>
+        <div class="col-md-4 col-lg-2">
+          <div class="cyber-card h-100 text-center p-3">
+            <div style="font-size: 1.5rem; color: #60a5fa; font-weight: 800; margin-bottom: 0.5rem;">06</div>
+            <h6 class="text-white fw-bold">Monetization</h6>
+            <p class="text-muted" style="font-size: 0.75rem; margin: 0;">Lateral network movement, data theft, wire fraud, or ransomware.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- The 6 Primary Types of Phishing (Detailed Profiles) -->
+    <section class="mb-5">
+      <div class="mb-4">
+        <span class="section-tag">TAXONOMY</span>
+        <h2 class="section-title">The 6 Core Types of Phishing</h2>
+        <p class="section-desc">Each attack vector possesses unique traits, recognition criteria, and tailored defense countermeasures.</p>
+      </div>
+
+            <div class="row g-4">
+
+        <!-- Type 1: Email Phishing -->
+        <div class="col-lg-6 d-flex align-items-stretch">
+          <div class="cyber-card phishing-type-card w-100">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <span class="cyber-badge badge-blue">TYPE 1</span>
+              <span class="text-muted" style="font-size: 0.8rem;">Mass Spray-and-Pray</span>
+            </div>
+            <h4 class="text-white fw-bold mb-2">1. Standard Email Phishing</h4>
+            <div class="type-card-definition">
+              <strong>Simple Definition:</strong> Mass-distributed deceptive emails sent to thousands or millions of recipients at once, impersonating well-known consumer brands like Netflix, PayPal, Microsoft, or banks.
+            </div>
+            <div class="type-card-indicators">
+              <strong style="color: #60a5fa; font-size: 0.85rem;">Indicators to Watch:</strong>
+              <p class="text-muted mt-1 mb-0" style="font-size: 0.85rem; line-height: 1.5;">
+                Generic greetings ("Dear Customer"), artificial account suspension deadlines ("within 24 hours"), mismatched sender email addresses, and deceptive hyperlinks.
+              </p>
+            </div>
+            <div class="type-card-example">
+              <strong style="color: #fbbf24; display: block; margin-bottom: 0.35rem;">Safe Educational Example:</strong>
+              <div class="text-muted font-monospace" style="font-size: 0.8rem; line-height: 1.5;">
+                <div><strong>From:</strong> "Netflix Billing" &lt;support@netflx-account-billing.com&gt;</div>
+                <div><strong>Subject:</strong> Your subscription is on hold due to declined payment.</div>
+                <div><strong>Link:</strong> https://netflx-update-card.online/renew (Deceptive Domain)</div>
+              </div>
+            </div>
+            <div class="type-card-prevention">
+              <strong style="color: #34d399; font-size: 0.85rem; display: block; margin-bottom: 0.35rem;">Prevention Best Practices:</strong>
+              <ul class="text-muted ps-3 mb-0" style="font-size: 0.85rem; line-height: 1.5;">
+                <li>Never click billing update links inside unexpected emails.</li>
+                <li>Open a clean browser tab and log into your account directly at the verified official domain.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Type 2: Spear Phishing -->
+        <div class="col-lg-6 d-flex align-items-stretch">
+          <div class="cyber-card phishing-type-card w-100">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <span class="cyber-badge badge-amber">TYPE 2</span>
+              <span class="text-muted" style="font-size: 0.8rem;">Targeted Reconnaissance</span>
+            </div>
+            <h4 class="text-white fw-bold mb-2">2. Spear Phishing</h4>
+            <div class="type-card-definition">
+              <strong>Simple Definition:</strong> A highly personalized, targeted attack directed at a specific individual, team, or organization, utilizing researched Open Source Intelligence (OSINT) from LinkedIn or social media.
+            </div>
+            <div class="type-card-indicators">
+              <strong style="color: #60a5fa; font-size: 0.85rem;">Indicators to Watch:</strong>
+              <p class="text-muted mt-1 mb-0" style="font-size: 0.85rem; line-height: 1.5;">
+                Contains accurate personal details (your real name, job title, department, current software projects, or colleagues' names) to establish credibility before requesting confidential access.
+              </p>
+            </div>
+            <div class="type-card-example">
+              <strong style="color: #fbbf24; display: block; margin-bottom: 0.35rem;">Safe Educational Example:</strong>
+              <div class="text-muted font-monospace" style="font-size: 0.8rem; line-height: 1.5;">
+                <div><strong>From:</strong> "HR Benefits Committee" &lt;hr-update@enterprise-corp.co&gt;</div>
+                <div><strong>Subject:</strong> John, please review the Q4 Developer Bonus Allocation spreadsheet.</div>
+                <div><strong>Attachment:</strong> Dev_Bonus_Review_JohnDoe.xlsm (Malicious Macro Payload)</div>
+              </div>
+            </div>
+            <div class="type-card-prevention">
+              <strong style="color: #34d399; font-size: 0.85rem; display: block; margin-bottom: 0.35rem;">Prevention Best Practices:</strong>
+              <ul class="text-muted ps-3 mb-0" style="font-size: 0.85rem; line-height: 1.5;">
+                <li>Scrutinize sender domains closely—look for 1-character typos (e.g. '.co' instead of '.com').</li>
+                <li>Verify unexpected internal documents via internal Slack/Teams before opening.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Type 3: Whaling -->
+        <div class="col-lg-6 d-flex align-items-stretch">
+          <div class="cyber-card phishing-type-card w-100">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <span class="cyber-badge badge-red">TYPE 3</span>
+              <span class="text-muted" style="font-size: 0.8rem;">Executive / C-Suite Target</span>
+            </div>
+            <h4 class="text-white fw-bold mb-2">3. Whaling (Executive BEC)</h4>
+            <div class="type-card-definition">
+              <strong>Simple Definition:</strong> Spear phishing directed specifically at "big fish"—CEOs, CFOs, Board Members, or finance leaders—with the goal of executing high-value wire fraud or stealing sensitive trade secrets.
+            </div>
+            <div class="type-card-indicators">
+              <strong style="color: #60a5fa; font-size: 0.85rem;">Indicators to Watch:</strong>
+              <p class="text-muted mt-1 mb-0" style="font-size: 0.85rem; line-height: 1.5;">
+                Requests for immediate wire transfers, changes to vendor bank accounts, or confidential acquisition details; demands extreme secrecy and urgency to bypass dual accounting authorizations.
+              </p>
+            </div>
+            <div class="type-card-example">
+              <strong style="color: #fbbf24; display: block; margin-bottom: 0.35rem;">Safe Educational Example:</strong>
+              <div class="text-muted font-monospace" style="font-size: 0.8rem; line-height: 1.5;">
+                <div><strong>From:</strong> "Robert Vance (CEO)" &lt;ceo.robert.vance@private-exec-mail.com&gt;</div>
+                <div><strong>Subject:</strong> CONFIDENTIAL: Urgent Wire Required for Escrow Closing Today.</div>
+                <div><strong>Message:</strong> "I am in transit and cannot take calls. Wire $140,000 immediately."</div>
+              </div>
+            </div>
+            <div class="type-card-prevention">
+              <strong style="color: #34d399; font-size: 0.85rem; display: block; margin-bottom: 0.35rem;">Prevention Best Practices:</strong>
+              <ul class="text-muted ps-3 mb-0" style="font-size: 0.85rem; line-height: 1.5;">
+                <li>Strict dual-authorization accounting controls: No wire transfer authorized by email alone.</li>
+                <li>Mandatory phone callback confirmation using established corporate phone numbers.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Type 4: Smishing -->
+        <div class="col-lg-6 d-flex align-items-stretch">
+          <div class="cyber-card phishing-type-card w-100">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <span class="cyber-badge badge-amber">TYPE 4</span>
+              <span class="text-muted" style="font-size: 0.8rem;">Mobile SMS Attack</span>
+            </div>
+            <h4 class="text-white fw-bold mb-2">4. Smishing (SMS Phishing)</h4>
+            <div class="type-card-definition">
+              <strong>Simple Definition:</strong> Phishing executed via Short Message Service (SMS) or mobile messaging apps (WhatsApp, iMessage, Signal) exploiting the higher open and trust rates of mobile phones.
+            </div>
+            <div class="type-card-indicators">
+              <strong style="color: #60a5fa; font-size: 0.85rem;">Indicators to Watch:</strong>
+              <p class="text-muted mt-1 mb-0" style="font-size: 0.85rem; line-height: 1.5;">
+                Short, urgent messages containing shortened links (bit.ly, tinyurl) or strange domains, claiming missed package deliveries, unpaid highway tolls, or bank fraud security freezes.
+              </p>
+            </div>
+            <div class="type-card-example">
+              <strong style="color: #fbbf24; display: block; margin-bottom: 0.35rem;">Safe Educational Example:</strong>
+              <div class="text-muted font-monospace" style="font-size: 0.8rem; line-height: 1.5;">
+                <div><strong>Sender:</strong> +1 (555) 019-2831 (Unknown Mobile Number)</div>
+                <div><strong>Text:</strong> "USPS Alert: Package #US-8419 held due to $1.95 unpaid customs duty."</div>
+                <div><strong>Link:</strong> https://usps-redeliver-fee.info/pay (Unverified Fake Domain)</div>
+              </div>
+            </div>
+            <div class="type-card-prevention">
+              <strong style="color: #34d399; font-size: 0.85rem; display: block; margin-bottom: 0.35rem;">Prevention Best Practices:</strong>
+              <ul class="text-muted ps-3 mb-0" style="font-size: 0.85rem; line-height: 1.5;">
+                <li>Never tap links in unexpected text messages.</li>
+                <li>Forward suspicious spam texts to 7726 (SPAM) to notify cellular carriers.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Type 5: Vishing -->
+        <div class="col-lg-6 d-flex align-items-stretch">
+          <div class="cyber-card phishing-type-card w-100">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <span class="cyber-badge badge-purple">TYPE 5</span>
+              <span class="text-muted" style="font-size: 0.8rem;">Voice / Phone Pretexting</span>
+            </div>
+            <h4 class="text-white fw-bold mb-2">5. Vishing (Voice Phishing)</h4>
+            <div class="type-card-definition">
+              <strong>Simple Definition:</strong> Voice phishing conducted over phone calls or VoIP. Attackers often use caller-ID spoofing and modern Generative AI voice cloning to impersonate IT support technicians, banks, or executives.
+            </div>
+            <div class="type-card-indicators">
+              <strong style="color: #60a5fa; font-size: 0.85rem;">Indicators to Watch:</strong>
+              <p class="text-muted mt-1 mb-0" style="font-size: 0.85rem; line-height: 1.5;">
+                The caller requests you to read back an SMS two-factor authentication code (OTP), claims your computer is transmitting virus signals, or asks you to install remote support software (AnyDesk, TeamViewer).
+              </p>
+            </div>
+            <div class="type-card-example">
+              <strong style="color: #fbbf24; display: block; margin-bottom: 0.35rem;">Safe Educational Example:</strong>
+              <div class="text-muted font-monospace" style="font-size: 0.8rem; line-height: 1.5;">
+                <div><strong>Caller ID:</strong> +1 (800) 555-0199 (Spoofed Helpdesk Number)</div>
+                <div><strong>Caller:</strong> "Hi John, this is Mike from IT. We detected anomalous malware."</div>
+                <div><strong>Prompt:</strong> "Read back the 6-digit MFA SMS code sent to your phone."</div>
+              </div>
+            </div>
+            <div class="type-card-prevention">
+              <strong style="color: #34d399; font-size: 0.85rem; display: block; margin-bottom: 0.35rem;">Prevention Best Practices:</strong>
+              <ul class="text-muted ps-3 mb-0" style="font-size: 0.85rem; line-height: 1.5;">
+                <li>Never share MFA codes, OTPs, or passwords over the phone with anyone.</li>
+                <li>Hang up and call back the official IT Helpdesk extension from the corporate directory.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Type 6: Clone Phishing -->
+        <div class="col-lg-6 d-flex align-items-stretch">
+          <div class="cyber-card phishing-type-card w-100">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <span class="cyber-badge badge-green">TYPE 6</span>
+              <span class="text-muted" style="font-size: 0.8rem;">Interception & Cloning</span>
+            </div>
+            <h4 class="text-white fw-bold mb-2">6. Clone Phishing</h4>
+            <div class="type-card-definition">
+              <strong>Simple Definition:</strong> An attack where the criminal captures an authentic, previously delivered legitimate email containing an attachment or link, copies it verbatim, and resends it with the legitimate attachment or link swapped for a malicious version.
+            </div>
+            <div class="type-card-indicators">
+              <strong style="color: #60a5fa; font-size: 0.85rem;">Indicators to Watch:</strong>
+              <p class="text-muted mt-1 mb-0" style="font-size: 0.85rem; line-height: 1.5;">
+                A message claiming to be an "updated version" or "resend" of an earlier communication (e.g. "Resending with corrected link" or "Updated contract attached").
+              </p>
+            </div>
+            <div class="type-card-example">
+              <strong style="color: #fbbf24; display: block; margin-bottom: 0.35rem;">Safe Educational Example:</strong>
+              <div class="text-muted font-monospace" style="font-size: 0.8rem; line-height: 1.5;">
+                <div><strong>From:</strong> "Legal Operations" &lt;contracts@vendor-agreement-portal.co&gt;</div>
+                <div><strong>Subject:</strong> Resending: Revised Vendor Agreement (Previous link expired)</div>
+                <div><strong>Link:</strong> https://contract-signing-portal.co/doc (Cloned Phishing Portal)</div>
+              </div>
+            </div>
+            <div class="type-card-prevention">
+              <strong style="color: #34d399; font-size: 0.85rem; display: block; margin-bottom: 0.35rem;">Prevention Best Practices:</strong>
+              <ul class="text-muted ps-3 mb-0" style="font-size: 0.85rem; line-height: 1.5;">
+                <li>Compare the sender email address against the original email thread.</li>
+                <li>Contact the sender on a separate channel before opening "resubmitted" links or files.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Navigation & Completion Trigger -->
+    <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 pt-4 border-top border-secondary">
+      <a href="/" class="btn btn-cyber-outline">← Back to Overview</a>
+      <button class="btn btn-cyber-primary" onclick="completeAndContinue()">
+        Mark Module 2 Completed & Go to Recognizing Emails →
+      </button>
+    </div>
+  </main>
+
+  <footer class="cyber-footer">
+    <div class="container text-center text-muted" style="font-size: 0.85rem;">
+      PHISHGUARD Educational Cybersecurity Training Platform • College Capstone Project
+    </div>
+  </footer>
+
+  <script src="/static/js/app.js"></script>
+  <script>
+    function completeAndContinue() {
+      markModuleCompleted('fundamentals');
+      playCyberTone('success');
+      setTimeout(() => {
+        window.location.href = '/emails';
+      }, 350);
+    }
+  </script>
+</body>
+</html>
+

@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fake Website Detection – PHISHGUARD</title>
+  <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/static/css/phishguard.css">
+</head>
+<body>
+
+  <!-- Main Navigation Bar -->
+  <nav class="navbar-phishguard">
+    <div class="container d-flex justify-content-between align-items-center flex-wrap gap-2">
+      <a href="/" class="brand-wrapper">
+        <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+        </svg>
+        <span>PHISHGUARD</span>
+        <span class="brand-badge">Security Training</span>
+      </a>
+
+      <div class="nav-links-wrapper">
+        <a href="/" class="nav-item-link">Home</a>
+        <a href="/fundamentals" class="nav-item-link">Fundamentals</a>
+        <a href="/emails" class="nav-item-link">Emails</a>
+        <a href="/fake-websites" class="nav-item-link active">Fake Sites</a>
+        <a href="/social-engineering" class="nav-item-link">Social Eng.</a>
+        <a href="/case-studies" class="nav-item-link">Case Studies</a>
+        <a href="/quiz" class="nav-item-link">Quiz</a>
+        <a href="/simulation-lab" class="nav-item-link">Sim Lab</a>
+        <a href="/safety-guide" class="nav-item-link">Safety Guide</a>
+        <a href="/final-assessment" class="nav-item-link">Assessment</a>
+        <a href="/dashboard" class="nav-item-link" style="color: #60a5fa; border-left: 1px solid var(--border-color); padding-left: 0.75rem;">Dashboard</a>
+        <button id="themeToggleBtn" class="theme-toggle-btn" onclick="togglePhishGuardTheme()" title="Toggle Light/Dark Theme"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg> <span>Dark</span></button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Global Training Progress Bar Ticker -->
+  <div class="nav-ticker-bar">
+    <div class="container d-flex justify-content-between align-items-center">
+      <span style="color: var(--text-muted);">Curriculum Progress: <strong id="navProgressText" style="color: var(--accent-blue-text);">0% Complete</strong></span>
+      <div class="nav-progress-track">
+        <div id="navProgressFill" class="nav-progress-fill"></div>
+      </div>
+    </div>
+  </div>
+
+  <main class="container py-5">
+    <div class="mb-5">
+      <span class="section-tag">PAGE 4 • WEB DEFENSE</span>
+      <h1 class="section-title">Fake Website Detection & URL Analysis</h1>
+      <p class="section-desc">
+        Learn how cybercriminals design counterfeit websites and manipulate URLs to fool users. Dissect web domains with our interactive forensic tool.
+      </p>
+    </div>
+
+    <!-- 8 Deceptive Web Tactics Grid -->
+    <section class="mb-5">
+      <div class="mb-4">
+        <span class="section-tag">DECEPTION TACTICS</span>
+        <h2 class="section-title" style="font-size: 1.75rem;">8 Common Web Deception Techniques</h2>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-md-6 col-lg-3">
+          <div class="cyber-card h-100 p-3">
+            <span class="cyber-badge badge-amber mb-2">TACTIC 1</span>
+            <h5 class="text-white fw-bold">Typosquatting</h5>
+            <p class="text-muted" style="font-size: 0.85rem;">
+              Registering common typos, missing letters, or adjacent keyboard keys (e.g. <code>amzon.com</code>, <code>paypa1.com</code>, <code>gooogle.com</code>) to catch hasty visitors.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+          <div class="cyber-card h-100 p-3">
+            <span class="cyber-badge badge-amber mb-2">TACTIC 2</span>
+            <h5 class="text-white fw-bold">Lookalike Domains</h5>
+            <p class="text-muted" style="font-size: 0.85rem;">
+              Adding security-themed suffixes or hyphens to a legitimate brand name, such as <code>chase-security-portal.com</code> or <code>apple-support-cloud.net</code>.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+          <div class="cyber-card h-100 p-3">
+            <span class="cyber-badge badge-red mb-2">TACTIC 3</span>
+            <h5 class="text-white fw-bold">Subdomain Trickery</h5>
+            <p class="text-muted" style="font-size: 0.85rem;">
+              Prepending trusted brand names as subdomains on an attacker server: <code>login.microsoft.com.attacker-controlled.xyz</code>. The true host is <code>attacker-controlled.xyz</code>!
+            </p>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+          <div class="cyber-card h-100 p-3">
+            <span class="cyber-badge badge-red mb-2">TACTIC 4</span>
+            <h5 class="text-white fw-bold">IDN Homoglyphs</h5>
+            <p class="text-muted" style="font-size: 0.85rem;">
+              Using international Cyrillic or Greek characters that render identically to Latin letters (e.g. Cyrillic 'а' U+0430 for 'a'). To humans it looks like <code>apple.com</code>.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+          <div class="cyber-card h-100 p-3">
+            <span class="cyber-badge badge-cyan mb-2">TACTIC 5</span>
+            <h5 class="text-white fw-bold">The HTTPS Padlock Fallacy</h5>
+            <p class="text-muted" style="font-size: 0.85rem;">
+              The lock icon means the connection is <strong>encrypted</strong>—it does NOT mean the website operator is honest! Over 82% of active phishing sites now possess valid SSL certificates.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+          <div class="cyber-card h-100 p-3">
+            <span class="cyber-badge badge-purple mb-2">TACTIC 6</span>
+            <h5 class="text-white fw-bold">Unexpected Login Prompts</h5>
+            <p class="text-muted" style="font-size: 0.85rem;">
+              Websites that immediately require entering Google or Microsoft 365 credentials before allowing you to view a simple menu, PDF, or blog post.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+          <div class="cyber-card h-100 p-3">
+            <span class="cyber-badge badge-amber mb-2">TACTIC 7</span>
+            <h5 class="text-white fw-bold">Counterfeit Payment Pages</h5>
+            <p class="text-muted" style="font-size: 0.85rem;">
+              E-commerce clones with broken checkout gateways that solicit payment via unrecoverable methods (wire transfers, crypto, Zelle, or sketchy direct card forms).
+            </p>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+          <div class="cyber-card h-100 p-3">
+            <span class="cyber-badge badge-red mb-2">TACTIC 8</span>
+            <h5 class="text-white fw-bold">AitM Reverse Proxies</h5>
+            <p class="text-muted" style="font-size: 0.85rem;">
+              Toolkits like Evilginx proxy the authentic Microsoft or Google login page in real-time, capturing your 2FA session token directly as you log in.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive URL Dissection Lab -->
+    <section class="mb-5">
+      <div class="cyber-card" style="border: 1px solid var(--border-color);">
+        <div class="mb-3">
+          <span class="section-tag">HANDS-ON LABORATORY</span>
+          <h2 class="section-title" style="font-size: 1.6rem;">Interactive Safe URL Decoder</h2>
+          <p class="text-muted" style="font-size: 0.95rem;">
+            Type any URL or select a preset below to see how a web browser resolves the destination. Locate the true domain before the first single slash (<code>/</code>).
+          </p>
+        </div>
+
+        <!-- URL Input & Buttons -->
+        <div class="row g-2 mb-3">
+          <div class="col-lg-9">
+            <input type="text" id="urlDecoderInput" class="url-input-field" placeholder="Enter URL e.g. https://login.microsoft.com.account-update.xyz/login.php" value="https://login.microsoft.com.account-update.xyz/login.php">
+          </div>
+          <div class="col-lg-3">
+            <button class="btn btn-cyber-primary w-100" onclick="runUrlAnalysis()">
+              Analyze Domain Structure
+            </button>
+          </div>
+        </div>
+
+        <!-- Presets Bar -->
+        <div class="d-flex align-items-center flex-wrap gap-2 mb-4">
+          <span class="text-muted fw-bold" style="font-size: 0.8rem;">Test Presets:</span>
+          <button class="btn btn-cyber-outline btn-sm" onclick="selectPresetUrl('https://login.microsoft.com.account-update.xyz/login.php')">Subdomain Trick (Fake M365)</button>
+          <button class="btn btn-cyber-outline btn-sm" onclick="selectPresetUrl('https://www.paypa1-security.com/cgi-bin/webscr')">Typosquatting (Paypa1)</button>
+          <button class="btn btn-cyber-outline btn-sm" onclick="selectPresetUrl('https://micrоsoft.com/download')">Cyrillic Homoglyph</button>
+          <button class="btn btn-cyber-outline btn-sm" onclick="selectPresetUrl('https://chase-bank-security-verification.net/signin')">Hyphenated Bank Clone</button>
+          <button class="btn btn-cyber-outline btn-sm" onclick="selectPresetUrl('https://portal.office.com/landing')">Legitimate Microsoft Portal</button>
+        </div>
+
+        <!-- Visual Syntax Deconstruction Display -->
+        <div class="url-breakdown-box">
+          <div class="text-muted fw-bold text-uppercase mb-2" style="font-size: 0.75rem; letter-spacing: 0.05em;">
+            Syntax Breakdown:
+          </div>
+          <div id="urlVisualSegments" class="d-flex flex-wrap gap-2 align-items-center mb-3">
+            <!-- Populated by urldecoder.js -->
+          </div>
+
+          <div id="urlDiagnosticResults">
+            <!-- Populated by urldecoder.js -->
+          </div>
+        </div>
+
+        <!-- Golden Rule Card -->
+        <div class="mt-4 p-3" style="background: rgba(0, 229, 255, 0.05); border: 1px solid rgba(0, 229, 255, 0.25); border-radius: 8px;">
+          <h6 class="fw-bold mb-1" style="color: #60a5fa;">💡 The Golden Rule of URL Safety:</h6>
+          <p class="text-muted mb-0" style="font-size: 0.85rem;">
+            Read URLs from right to left! Find the very first single slash (<code>/</code>) after the <code>https://</code>. The two words immediately to the left of that slash define the <strong>True Registered Domain</strong>. Everything before that is just a subdomain prefix that any scammer can create in seconds.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Navigation & Next Steps -->
+    <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 pt-4 border-top border-secondary">
+      <a href="/emails" class="btn btn-cyber-outline">← Back to Recognizing Emails</a>
+      <button class="btn btn-cyber-primary" onclick="continueToSocialEng()">
+        Mark Module 4 Completed & Go to Social Engineering →
+      </button>
+    </div>
+  </main>
+
+  <footer class="cyber-footer">
+    <div class="container text-center text-muted" style="font-size: 0.85rem;">
+      PHISHGUARD Educational Cybersecurity Training Platform • College Capstone Project
+    </div>
+  </footer>
+
+  <script src="/static/js/app.js"></script>
+  <script src="/static/js/urldecoder.js"></script>
+  <script>
+    function continueToSocialEng() {
+      markModuleCompleted('fake_websites');
+      playCyberTone('success');
+      setTimeout(() => {
+        window.location.href = '/social-engineering';
+      }, 350);
+    }
+  </script>
+</body>
+</html>
+

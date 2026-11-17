@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simulation Learning Lab – PHISHGUARD</title>
+  <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/static/css/phishguard.css">
+</head>
+<body>
+
+  <!-- Main Navigation Bar -->
+  <nav class="navbar-phishguard">
+    <div class="container d-flex justify-content-between align-items-center flex-wrap gap-2">
+      <a href="/" class="brand-wrapper">
+        <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+        </svg>
+        <span>PHISHGUARD</span>
+        <span class="brand-badge">Security Training</span>
+      </a>
+
+      <div class="nav-links-wrapper">
+        <a href="/" class="nav-item-link">Home</a>
+        <a href="/fundamentals" class="nav-item-link">Fundamentals</a>
+        <a href="/emails" class="nav-item-link">Emails</a>
+        <a href="/fake-websites" class="nav-item-link">Fake Sites</a>
+        <a href="/social-engineering" class="nav-item-link">Social Eng.</a>
+        <a href="/case-studies" class="nav-item-link">Case Studies</a>
+        <a href="/quiz" class="nav-item-link">Quiz</a>
+        <a href="/simulation-lab" class="nav-item-link active">Sim Lab</a>
+        <a href="/safety-guide" class="nav-item-link">Safety Guide</a>
+        <a href="/final-assessment" class="nav-item-link">Assessment</a>
+        <a href="/dashboard" class="nav-item-link" style="color: #60a5fa; border-left: 1px solid var(--border-color); padding-left: 0.75rem;">Dashboard</a>
+        <button id="themeToggleBtn" class="theme-toggle-btn" onclick="togglePhishGuardTheme()" title="Toggle Light/Dark Theme"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg> <span>Dark</span></button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Global Training Progress Bar Ticker -->
+  <div class="nav-ticker-bar">
+    <div class="container d-flex justify-content-between align-items-center">
+      <span style="color: var(--text-muted);">Curriculum Progress: <strong id="navProgressText" style="color: var(--accent-blue-text);">0% Complete</strong></span>
+      <div class="nav-progress-track">
+        <div id="navProgressFill" class="nav-progress-fill"></div>
+      </div>
+    </div>
+  </div>
+
+  <main class="container py-5">
+    <div class="mb-4">
+      <span class="section-tag">PAGE 8 • PRACTICAL SANDBOX</span>
+      <h1 class="section-title">Phishing Simulation Learning Lab</h1>
+      <p class="section-desc">
+        A safe, completely offline training simulator. Examine realistic incoming email scenarios, inspect sender headers and hoverable URLs, uncover detective red-flag hotspots, and test your defensive assessment.
+      </p>
+    </div>
+
+    <!-- Safety Disclaimer Banner -->
+    <div class="p-3 mb-4 d-flex align-items-center gap-3" style="background: rgba(16, 185, 129, 0.08); border: 1px solid #10b981; border-radius: var(--radius-md);">
+      <span style="color: #10b981;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></span>
+      <div style="font-size: 0.85rem; color: #a7f3d0;">
+        <strong>Safety & Privacy Guarantee:</strong> This is a safe educational simulation. It operates 100% offline. PHISHGUARD never collects passwords, payment numbers, or personal credentials, nor sends live outbound communications.
+      </div>
+    </div>
+
+    <!-- Scenario Selector Tabs -->
+    <div class="d-flex flex-wrap gap-2 mb-4">
+      <button class="btn btn-cyber-primary sim-tab-btn active" onclick="loadSimScenario(0)">Scenario 1: M365 Shared Doc</button>
+      <button class="btn btn-cyber-outline sim-tab-btn" onclick="loadSimScenario(1)">Scenario 2: DHL Customs Clearance</button>
+      <button class="btn btn-cyber-outline sim-tab-btn" onclick="loadSimScenario(2)">Scenario 3: Executive Wire Transfer</button>
+      <button class="btn btn-cyber-outline sim-tab-btn" onclick="loadSimScenario(3)">Scenario 4: Routine IT Notice (Legitimate)</button>
+    </div>
+
+    <!-- Email Client Simulator Window -->
+    <div class="email-client-mockup mb-4">
+      <div class="email-top-header">
+        <div class="d-flex align-items-center gap-2">
+          <span style="width: 10px; height: 10px; border-radius: 50%; background: #ef4444;"></span>
+          <span style="width: 10px; height: 10px; border-radius: 50%; background: #f59e0b;"></span>
+          <span style="width: 10px; height: 10px; border-radius: 50%; background: #10b981;"></span>
+          <span class="text-white fw-bold ms-2" id="simSubjectLine" style="font-size: 0.95rem;">Subject loading...</span>
+        </div>
+        <span class="cyber-badge badge-blue">INSPECTOR MODE</span>
+      </div>
+
+      <div class="email-meta-table">
+        <div class="email-meta-row">
+          <span class="text-muted fw-bold">From:</span>
+          <span>
+            <strong class="text-white" id="simSenderDisplay">...</strong> 
+            <span class="text-muted" id="simSenderEmail">...</span>
+          </span>
+        </div>
+        <div class="email-meta-row">
+          <span class="text-muted fw-bold">Reply-To:</span>
+          <span id="simReplyTo" class="text-muted">...</span>
+        </div>
+        <div class="email-meta-row">
+          <span class="text-muted fw-bold">To:</span>
+          <span id="simRecipient" class="text-muted">...</span>
+        </div>
+      </div>
+
+      <!-- Email Body Area -->
+      <div class="email-body-content" id="simBodyArea">
+        <!-- Rendered by lab.js -->
+      </div>
+
+      <!-- Simulator Action Controls Bar -->
+      <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 p-3" style="background: var(--surface-2); border-top: 1px solid var(--border-color);">
+        <button class="btn btn-cyber-outline" id="simHotspotToggleBtn" onclick="toggleHotspots()">
+          Inspect Indicator Highlights
+        </button>
+
+        <div class="d-flex gap-2">
+          <button class="btn btn-cyber-danger" onclick="submitSimVerdict('phish')">
+            Report as Phishing
+          </button>
+          <button class="btn btn-cyber-success" onclick="submitSimVerdict('safe')">
+            Mark as Legitimate
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Forensic Feedback Panel -->
+    <div id="simFeedbackPanel" class="p-4 mb-5" style="display: none; border-radius: var(--radius-md); animation: fadeIn 0.3s ease;">
+      <!-- Populated by lab.js -->
+    </div>
+
+    <!-- Navigation & Next Steps -->
+    <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 pt-4 border-top border-secondary">
+      <a href="/quiz" class="btn btn-cyber-outline">← Back to 15-Question Quiz</a>
+      <a href="/safety-guide" class="btn btn-cyber-primary">
+        Go to Module 9: Prevention & Safety Guide →
+      </a>
+    </div>
+  </main>
+
+  <footer class="cyber-footer">
+    <div class="container text-center text-muted" style="font-size: 0.85rem;">
+      PHISHGUARD Educational Cybersecurity Training Platform • College Capstone Project
+    </div>
+  </footer>
+
+  <script src="/static/js/app.js"></script>
+  <script src="/static/js/lab.js"></script>
+</body>
+</html>
+

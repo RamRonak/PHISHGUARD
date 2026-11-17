@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Social Engineering Awareness – PHISHGUARD</title>
+  <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/static/css/phishguard.css">
+</head>
+<body>
+
+  <!-- Main Navigation Bar -->
+  <nav class="navbar-phishguard">
+    <div class="container d-flex justify-content-between align-items-center flex-wrap gap-2">
+      <a href="/" class="brand-wrapper">
+        <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+        </svg>
+        <span>PHISHGUARD</span>
+        <span class="brand-badge">Security Training</span>
+      </a>
+
+      <div class="nav-links-wrapper">
+        <a href="/" class="nav-item-link">Home</a>
+        <a href="/fundamentals" class="nav-item-link">Fundamentals</a>
+        <a href="/emails" class="nav-item-link">Emails</a>
+        <a href="/fake-websites" class="nav-item-link">Fake Sites</a>
+        <a href="/social-engineering" class="nav-item-link active">Social Eng.</a>
+        <a href="/case-studies" class="nav-item-link">Case Studies</a>
+        <a href="/quiz" class="nav-item-link">Quiz</a>
+        <a href="/simulation-lab" class="nav-item-link">Sim Lab</a>
+        <a href="/safety-guide" class="nav-item-link">Safety Guide</a>
+        <a href="/final-assessment" class="nav-item-link">Assessment</a>
+        <a href="/dashboard" class="nav-item-link" style="color: #60a5fa; border-left: 1px solid var(--border-color); padding-left: 0.75rem;">Dashboard</a>
+        <button id="themeToggleBtn" class="theme-toggle-btn" onclick="togglePhishGuardTheme()" title="Toggle Light/Dark Theme"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg> <span>Dark</span></button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Global Training Progress Bar Ticker -->
+  <div class="nav-ticker-bar">
+    <div class="container d-flex justify-content-between align-items-center">
+      <span style="color: var(--text-muted);">Curriculum Progress: <strong id="navProgressText" style="color: var(--accent-blue-text);">0% Complete</strong></span>
+      <div class="nav-progress-track">
+        <div id="navProgressFill" class="nav-progress-fill"></div>
+      </div>
+    </div>
+  </div>
+
+  <main class="container py-5">
+    <div class="mb-5">
+      <span class="section-tag">PAGE 5 • PSYCHOLOGY OF ATTACK</span>
+      <h1 class="section-title">Social Engineering Awareness</h1>
+      <p class="section-desc">
+        Cybercriminals are psychological hackers. Explore the 7 core cognitive triggers manipulated by social engineers, complete with real-world scenarios and safe response protocols.
+      </p>
+    </div>
+
+    <!-- The 7 Psychological Tactics -->
+    <div class="row g-4 mb-5">
+
+      <!-- Tactic 1: Urgency -->
+      <div class="col-lg-6">
+        <div class="cyber-card h-100">
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <span class="cyber-badge badge-amber">TRIGGER 1</span>
+            <span class="text-muted" style="font-size: 0.8rem;">Cognitive Overload</span>
+          </div>
+          <h4 class="text-white fw-bold mb-2">1. Artificial Urgency</h4>
+          <p class="text-muted" style="font-size: 0.9rem;">
+            <strong>Meaning:</strong> Fabricating intense time pressure ("within 1 hour", "before market close", "immediate action required") to force victims to react impulsively without engaging rational critical thinking.
+          </p>
+          <div class="mb-2 p-2" style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); border-radius: 6px; font-size: 0.85rem;">
+            <strong style="color: #fbbf24;">Fictional Scenario:</strong> An email appears from your payroll provider: <em>"System maintenance tonight! Update your direct deposit bank account within 90 minutes or your upcoming salary check will be canceled."</em>
+          </div>
+          <div class="mb-2">
+            <strong style="color: #60a5fa; font-size: 0.8rem;">Warning Indicators:</strong>
+            <span class="text-muted" style="font-size: 0.8rem;">Strict arbitrary deadlines, countdown timers, and threats of penalties for delay.</span>
+          </div>
+          <div>
+            <strong style="color: #34d399; font-size: 0.8rem;">Defensive Protocol:</strong>
+            <span class="text-muted" style="font-size: 0.8rem;">Take a breath. Legitimate organizations rarely impose sudden 1-hour deadlines for routine tasks. Contact the organization via official numbers.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tactic 2: Fear -->
+      <div class="col-lg-6">
+        <div class="cyber-card h-100">
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <span class="cyber-badge badge-red">TRIGGER 2</span>
+            <span class="text-muted" style="font-size: 0.8rem;">Threat of Loss</span>
+          </div>
+          <h4 class="text-white fw-bold mb-2">2. Fear & Intimidation</h4>
+          <p class="text-muted" style="font-size: 0.9rem;">
+            <strong>Meaning:</strong> Threatening severe consequences—such as arrest, job termination, legal lawsuits, or complete identity destruction—to frighten the victim into blind compliance.
+          </p>
+          <div class="mb-2 p-2" style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); border-radius: 6px; font-size: 0.85rem;">
+            <strong style="color: #fbbf24;">Fictional Scenario:</strong> A phone call or message claiming to be from the Tax Revenue Service: <em>"A federal tax fraud warrant has been issued against you. Police will arrive in 45 minutes unless you settle back taxes via electronic payment."</em>
+          </div>
+          <div class="mb-2">
+            <strong style="color: #60a5fa; font-size: 0.8rem;">Warning Indicators:</strong>
+            <span class="text-muted" style="font-size: 0.8rem;">Threats of arrest, refusal to send official postal notices, demands for immediate untraceable payments.</span>
+          </div>
+          <div>
+            <strong style="color: #34d399; font-size: 0.8rem;">Defensive Protocol:</strong>
+            <span class="text-muted" style="font-size: 0.8rem;">Hang up. Law enforcement and tax authorities communicate formal legal matters via certified postal mail, never threatening phone calls.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tactic 3: Authority -->
+      <div class="col-lg-6">
+        <div class="cyber-card h-100">
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <span class="cyber-badge badge-purple">TRIGGER 3</span>
+            <span class="text-muted" style="font-size: 0.8rem;">Hierarchy Deference</span>
+          </div>
+          <h4 class="text-white fw-bold mb-2">3. Authority Impersonation</h4>
+          <p class="text-muted" style="font-size: 0.9rem;">
+            <strong>Meaning:</strong> Exploiting the conditioned human instinct to obey executive leaders, auditors, law enforcement, or IT administrators without questioning their requests.
+          </p>
+          <div class="mb-2 p-2" style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); border-radius: 6px; font-size: 0.85rem;">
+            <strong style="color: #fbbf24;">Fictional Scenario:</strong> An accountant receives an email signed by the Chief Executive Officer: <em>"I need you to wire $65,000 for a confidential legal retainer. Do not discuss this with anyone in the office as it is strictly confidential."</em>
+          </div>
+          <div class="mb-2">
+            <strong style="color: #60a5fa; font-size: 0.8rem;">Warning Indicators:</strong>
+            <span class="text-muted" style="font-size: 0.8rem;">Requests to bypass established financial checks, demands for secrecy, sent from external webmail addresses.</span>
+          </div>
+          <div>
+            <strong style="color: #34d399; font-size: 0.8rem;">Defensive Protocol:</strong>
+            <span class="text-muted" style="font-size: 0.8rem;">Follow company protocol. Call the executive on their known internal company number. Never bypass dual-authorization policies.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tactic 4: Curiosity -->
+      <div class="col-lg-6">
+        <div class="cyber-card h-100">
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <span class="cyber-badge badge-cyan">TRIGGER 4</span>
+            <span class="text-muted" style="font-size: 0.8rem;">Information Gap</span>
+          </div>
+          <h4 class="text-white fw-bold mb-2">4. Curiosity & Intrigue</h4>
+          <p class="text-muted" style="font-size: 0.9rem;">
+            <strong>Meaning:</strong> Weaponizing natural human inquisitiveness with tantalizing or sensational subjects (e.g. leaked salary lists, corporate layoffs, celebrity scandals, or confidential gossip).
+          </p>
+          <div class="mb-2 p-2" style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); border-radius: 6px; font-size: 0.85rem;">
+            <strong style="color: #fbbf24;">Fictional Scenario:</strong> An internal email titled: <em>"LEAKED: Upcoming Employee Layoff List & Salary Reduction Matrix.xlsx"</em> with an attachment requiring macros to view.
+          </div>
+          <div class="mb-2">
+            <strong style="color: #60a5fa; font-size: 0.8rem;">Warning Indicators:</strong>
+            <span class="text-muted" style="font-size: 0.8rem;">Sensationalist titles, unsolicited files promising insider gossip, suspicious file extensions (.docm, .xlsm, .exe).</span>
+          </div>
+          <div>
+            <strong style="color: #34d399; font-size: 0.8rem;">Defensive Protocol:</strong>
+            <span class="text-muted" style="font-size: 0.8rem;">Do not open. Curiosity traps are among the highest-converting malware vectors. Report the message to IT Security immediately.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tactic 5: Trust Exploitation -->
+      <div class="col-lg-6">
+        <div class="cyber-card h-100">
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <span class="cyber-badge badge-green">TRIGGER 5</span>
+            <span class="text-muted" style="font-size: 0.8rem;">Familiarity Bias</span>
+          </div>
+          <h4 class="text-white fw-bold mb-2">5. Trust Exploitation (Pretexting)</h4>
+          <p class="text-muted" style="font-size: 0.9rem;">
+            <strong>Meaning:</strong> Infiltrating or hijacking trusted communication channels (e.g. an existing vendor or colleague's compromised email) to establish an authentic-seeming pretext.
+          </p>
+          <div class="mb-2 p-2" style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); border-radius: 6px; font-size: 0.85rem;">
+            <strong style="color: #fbbf24;">Fictional Scenario:</strong> An email arrives inside an ongoing email thread with a regular office furniture vendor: <em>"Please note our banking partner has changed. Kindly route invoice #4912 payment to our new bank account attached."</em>
+          </div>
+          <div class="mb-2">
+            <strong style="color: #60a5fa; font-size: 0.8rem;">Warning Indicators:</strong>
+            <span class="text-muted" style="font-size: 0.8rem;">Sudden unannounced routing number changes, subtle differences in writing style or tone.</span>
+          </div>
+          <div>
+            <strong style="color: #34d399; font-size: 0.8rem;">Defensive Protocol:</strong>
+            <span class="text-muted" style="font-size: 0.8rem;">Mandatory verbal verification via phone call to the vendor's verified billing manager using a previously established phone number.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tactic 6: Reward / Prizes -->
+      <div class="col-lg-6">
+        <div class="cyber-card h-100">
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <span class="cyber-badge badge-amber">TRIGGER 6</span>
+            <span class="text-muted" style="font-size: 0.8rem;">Greed & Reward</span>
+          </div>
+          <h4 class="text-white fw-bold mb-2">6. Reward, Prize & Gift Scams</h4>
+          <p class="text-muted" style="font-size: 0.9rem;">
+            <strong>Meaning:</strong> Dangling fake rewards, unearned bonuses, gift cards, or sweepstake prizes to excite victims and lower their defensive skepticism.
+          </p>
+          <div class="mb-2 p-2" style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); border-radius: 6px; font-size: 0.85rem;">
+            <strong style="color: #fbbf24;">Fictional Scenario:</strong> A notification claiming: <em>"Congratulations! You were randomly selected as the Amazon Holiday Shopper of the Month! Claim your $500 Amazon Gift Card by paying a $1.99 postage fee."</em>
+          </div>
+          <div class="mb-2">
+            <strong style="color: #60a5fa; font-size: 0.8rem;">Warning Indicators:</strong>
+            <span class="text-muted" style="font-size: 0.8rem;">Winning contests you never entered, requests to pay a processing or shipping fee to claim prizes.</span>
+          </div>
+          <div>
+            <strong style="color: #34d399; font-size: 0.8rem;">Defensive Protocol:</strong>
+            <span class="text-muted" style="font-size: 0.8rem;">Remember: You cannot win a contest you never entered. Legitimate rewards never require you to pay an upfront fee to claim them.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tactic 7: Impersonation of Friends/Family -->
+      <div class="col-lg-12">
+        <div class="cyber-card" style="border-left: 3px solid var(--accent-blue);">
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <span class="cyber-badge badge-cyan">TRIGGER 7</span>
+            <span class="text-muted" style="font-size: 0.8rem;">Sympathy & Helpfulness</span>
+          </div>
+          <h4 class="text-white fw-bold mb-2">7. Impersonation of Friends or Colleagues ("In Distress")</h4>
+          <p class="text-muted" style="font-size: 0.9rem;">
+            <strong>Meaning:</strong> Exploiting kindness, empathy, and willingness to assist a friend or family member who is purportedly stranded, injured, or facing an immediate emergency.
+          </p>
+          <div class="mb-2 p-2" style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); border-radius: 6px; font-size: 0.85rem;">
+            <strong style="color: #fbbf24;">Fictional Scenario:</strong> A WhatsApp message from an unknown number with your relative's profile picture: <em>"Hi Mom/Dad, I dropped my phone in the lake. This is my temporary number. I urgently need $350 for car towing; can you Zelle it to this garage account right now?"</em>
+          </div>
+          <div class="row mt-3">
+            <div class="col-md-6">
+              <strong style="color: #60a5fa; font-size: 0.8rem;">Warning Indicators:</strong>
+              <p class="text-muted" style="font-size: 0.8rem; margin: 0;">New unfamiliar phone numbers, unusual payment methods (peer-to-peer apps, gift cards, crypto), insistence that they cannot talk on the phone.</p>
+            </div>
+            <div class="col-md-6">
+              <strong style="color: #34d399; font-size: 0.8rem;">Defensive Protocol:</strong>
+              <p class="text-muted" style="font-size: 0.8rem; margin: 0;">Call the friend or relative on their original known phone number. Ask a private question only the real person could answer (e.g. childhood pet name).</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Navigation & Next Steps -->
+    <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 pt-4 border-top border-secondary">
+      <a href="/fake-websites" class="btn btn-cyber-outline">← Back to Fake Sites</a>
+      <button class="btn btn-cyber-primary" onclick="continueToCaseStudies()">
+        Mark Module 5 Completed & Go to Case Studies →
+      </button>
+    </div>
+  </main>
+
+  <footer class="cyber-footer">
+    <div class="container text-center text-muted" style="font-size: 0.85rem;">
+      PHISHGUARD Educational Cybersecurity Training Platform • College Capstone Project
+    </div>
+  </footer>
+
+  <script src="/static/js/app.js"></script>
+  <script>
+    function continueToCaseStudies() {
+      markModuleCompleted('social_engineering');
+      playCyberTone('success');
+      setTimeout(() => {
+        window.location.href = '/case-studies';
+      }, 350);
+    }
+  </script>
+</body>
+</html>
+

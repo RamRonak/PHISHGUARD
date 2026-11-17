@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Final Assessment & Certificate – PHISHGUARD</title>
+  <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/static/css/phishguard.css">
+</head>
+<body>
+
+  <!-- Main Navigation Bar -->
+  <nav class="navbar-phishguard no-print">
+    <div class="container d-flex justify-content-between align-items-center flex-wrap gap-2">
+      <a href="/" class="brand-wrapper">
+        <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+        </svg>
+        <span>PHISHGUARD</span>
+        <span class="brand-badge">Security Training</span>
+      </a>
+
+      <div class="nav-links-wrapper">
+        <a href="/" class="nav-item-link">Home</a>
+        <a href="/fundamentals" class="nav-item-link">Fundamentals</a>
+        <a href="/emails" class="nav-item-link">Emails</a>
+        <a href="/fake-websites" class="nav-item-link">Fake Sites</a>
+        <a href="/social-engineering" class="nav-item-link">Social Eng.</a>
+        <a href="/case-studies" class="nav-item-link">Case Studies</a>
+        <a href="/quiz" class="nav-item-link">Quiz</a>
+        <a href="/simulation-lab" class="nav-item-link">Sim Lab</a>
+        <a href="/safety-guide" class="nav-item-link">Safety Guide</a>
+        <a href="/final-assessment" class="nav-item-link active">Assessment</a>
+        <a href="/dashboard" class="nav-item-link" style="color: #60a5fa; border-left: 1px solid var(--border-color); padding-left: 0.75rem;">Dashboard</a>
+        <button id="themeToggleBtn" class="theme-toggle-btn" onclick="togglePhishGuardTheme()" title="Toggle Light/Dark Theme"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg> <span>Dark</span></button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Global Training Progress Bar Ticker -->
+  <div class="no-print" style="background: rgba(17, 24, 39, 0.8); border-bottom: 1px solid var(--border-color); padding: 0.35rem 1.5rem; font-size: 0.8rem;">
+    <div class="container d-flex justify-content-between align-items-center">
+      <span style="color: var(--text-muted);">Curriculum Progress: <strong id="navProgressText" style="color: #60a5fa;">0% Complete</strong></span>
+      <div style="width: 140px; height: 6px; background: #0c1527; border-radius: 9999px; overflow: hidden; border: 1px solid var(--border-color);">
+        <div id="navProgressFill" style="height: 100%; width: 0%; background: var(--accent-blue); transition: width 0.4s ease;"></div>
+      </div>
+    </div>
+  </div>
+
+  <main class="container py-5">
+    <div class="mb-4 no-print">
+      <span class="section-tag">PAGE 10 • CAPSTONE CERTIFICATION</span>
+      <h1 class="section-title">Final Assessment & Certificate of Completion</h1>
+      <p class="section-desc">
+        Demonstrate your complete defensive capabilities across 10 capstone scenarios. Achieve a score of 80% (8/10) or higher to earn your verifiable Certificate of Completion.
+      </p>
+    </div>
+
+    <!-- Intro Card -->
+    <div id="assessIntroBox" class="cyber-card p-4 mb-5 text-center no-print" style="max-width: 800px; margin: 0 auto; border: 1px solid var(--border-color);">
+      <div style="width: 56px; height: 56px; margin: 0 auto 1rem; background: var(--accent-blue-subtle); border: 1px solid var(--accent-blue-border); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--accent-blue)" stroke-width="2">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+          <polyline points="9 11 12 14 22 4"></polyline>
+        </svg>
+      </div>
+      <h3 class="text-white fw-bold mb-2">Final Certification Exam</h3>
+      <p class="text-muted mb-4" style="max-width: 600px; margin: 0 auto 1.5rem; font-size: 0.95rem;">
+        This assessment covers real-world scenarios: payroll redirection, deceptive subdomains, smishing fees, AitM reverse proxies, vishing pretexting, macro payloads, and emergency incident response.
+      </p>
+      <div class="d-flex justify-content-center gap-4 mb-4 text-muted" style="font-size: 0.9rem;">
+        <div><strong>Questions:</strong> 10 Scenarios</div>
+        <div><strong>Passing Score:</strong> 80% (8/10)</div>
+        <div><strong>Attempts:</strong> Unlimited Retakes</div>
+      </div>
+      <button class="btn btn-cyber-primary btn-lg" onclick="startAssessment()">
+        Start Final Assessment
+      </button>
+    </div>
+
+    <!-- Active Exam Canvas -->
+    <div id="assessExamBox" class="cyber-card mb-5 no-print" style="display: none; max-width: 900px; margin: 0 auto; border: 1px solid var(--border-color);">
+      <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 pb-3 mb-4 border-bottom border-secondary">
+        <span class="cyber-badge badge-amber" id="assessScenarioTag">Scenario 1</span>
+        <div class="d-flex align-items-center gap-3">
+          <div style="width: 140px; height: 8px; background: #0b1426; border-radius: 9999px; overflow: hidden; border: 1px solid var(--border-color);">
+            <div id="assessProgressBar" style="width: 0%; height: 100%; background: var(--neon-green); transition: width 0.3s ease;"></div>
+          </div>
+          <span class="text-white fw-bold" id="assessProgressText">Question 1 of 10</span>
+        </div>
+      </div>
+
+      <h4 class="text-white fw-bold mb-4" id="assessQuestionText" style="line-height: 1.4;">
+        Loading scenario...
+      </h4>
+
+      <div class="d-flex flex-column gap-3 mb-4" id="assessOptionsContainer">
+        <!-- Rendered by assessment.js -->
+      </div>
+
+      <div id="assessFeedbackBox" class="quiz-explanation-box">
+        <!-- Rationale rendered by assessment.js -->
+      </div>
+
+      <div class="d-flex justify-content-end mt-4">
+        <button class="btn btn-cyber-primary" id="assessNextBtn" style="display: none;" onclick="handleNextAssessmentQuestion()">
+          Next Scenario →
+        </button>
+      </div>
+    </div>
+
+    <!-- Final Assessment Results Box -->
+    <div id="assessResultsBox" class="cyber-card p-4 mb-5 no-print" style="display: none; max-width: 900px; margin: 0 auto;">
+      <div class="text-center mb-4">
+        <div style="font-size: 3rem; margin-bottom: 0.5rem;">📊</div>
+        <h2 class="text-white fw-bold mb-1">Assessment Evaluation Complete</h2>
+        <p class="text-muted" id="assessScoreDetail">Score Summary</p>
+
+        <div class="d-inline-block p-3 my-2" style="background: rgba(0, 229, 255, 0.08); border: 2px solid var(--neon-cyan); border-radius: var(--radius-md); min-width: 160px;">
+          <div style="font-size: 3rem; font-weight: 900; color: var(--text-main);" id="assessFinalPct">0%</div>
+        </div>
+        <div class="mt-2">
+          <span class="cyber-badge" id="assessStatusBadge" style="font-size: 1rem; padding: 0.4rem 1rem;">STATUS</span>
+        </div>
+      </div>
+
+      <!-- Certificate Action Box (If passed) -->
+      <div id="assessCertActionArea" class="p-4 mb-4 text-center" style="display: none; background: rgba(16, 185, 129, 0.08); border: 1px solid #10b981; border-radius: var(--radius-lg);">
+        <h4 class="text-white fw-bold mb-2">🎉 Congratulations! You Qualified for Certification!</h4>
+        <p class="text-muted mb-3" style="font-size: 0.95rem;">
+          Enter your full name below to claim and generate your verified PHISHGUARD Certificate of Completion:
+        </p>
+        <div class="d-flex justify-content-center gap-2 flex-wrap mb-2" style="max-width: 480px; margin: 0 auto;">
+          <input type="text" id="certLearnerNameInput" class="url-input-field" placeholder="Enter Full Name" value="Alex Mercer" style="text-align: center; font-weight: 700;">
+          <button class="btn btn-cyber-success" onclick="generateCertificate()">
+            📜 Generate Certificate
+          </button>
+        </div>
+      </div>
+
+      <!-- Question-by-Question Forensic Review -->
+      <div class="mb-4">
+        <h5 class="text-white fw-bold mb-3">Diagnostic Question Review:</h5>
+        <div id="assessReviewContainer">
+          <!-- Populated by assessment.js -->
+        </div>
+      </div>
+
+      <div class="d-flex justify-content-center gap-3">
+        <button class="btn btn-cyber-outline" onclick="initAssessment()">
+          Retake Assessment
+        </button>
+        <a href="/dashboard" class="btn btn-cyber-primary">
+          View Learning Dashboard →
+        </a>
+      </div>
+    </div>
+
+    <!-- Official Verifiable Certificate Frame -->
+    <div id="printableCertificate" class="certificate-frame mb-5" style="display: none;">
+      <div class="certificate-seal-badge">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+          <polyline points="9 11 12 14 22 4"></polyline>
+        </svg>
+      </div>
+
+      <h1 style="color: var(--text-main); font-size: 2.25rem; font-weight: 800; letter-spacing: 0.02em; text-transform: uppercase; margin-bottom: 0.25rem;">
+        Certificate of Completion
+      </h1>
+      <div style="color: #60a5fa; font-weight: 600; font-size: 1rem; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 1.5rem;">
+        PHISHGUARD CYBERSECURITY DEFENSE PROGRAM
+      </div>
+
+      <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 0.5rem;">
+        This educational record officially certifies that
+      </p>
+
+      <div class="cert-name-display" id="certDisplayName">
+        Alex Mercer
+      </div>
+
+      <p style="color: #cbd5e1; max-width: 650px; margin: 1rem auto 2rem; font-size: 1.05rem; line-height: 1.6;">
+        has successfully completed the comprehensive training curriculum and achieved mastery in recognizing deceptive emails, identifying counterfeit websites and lookalike domains, mitigating social engineering cognitive exploits, and adhering to incident response protocols.
+      </p>
+
+      <div class="d-flex justify-content-around flex-wrap gap-4 py-3 border-top border-bottom border-secondary mb-4" style="font-size: 0.95rem;">
+        <div>
+          <span class="text-muted d-block" style="font-size: 0.75rem; text-transform: uppercase;">Course Title</span>
+          <strong class="text-white">Phishing Defense & Social Engineering</strong>
+        </div>
+        <div>
+          <span class="text-muted d-block" style="font-size: 0.75rem; text-transform: uppercase;">Assessment Score</span>
+          <strong style="color: #34d399;" id="certDisplayScore">100%</strong>
+        </div>
+        <div>
+          <span class="text-muted d-block" style="font-size: 0.75rem; text-transform: uppercase;">Issue Date</span>
+          <strong class="text-white" id="certDisplayDate">November 16, 2026</strong>
+        </div>
+        <div>
+          <span class="text-muted d-block" style="font-size: 0.75rem; text-transform: uppercase;">Certificate ID</span>
+          <strong style="color: #60a5fa; font-family: monospace;" id="certDisplayId">PG-2026-X94B12</strong>
+        </div>
+      </div>
+
+      <!-- Educational Disclaimer Note -->
+      <div class="cert-disclaimer-box">
+        <strong>Educational Notice:</strong> This is a self-issued completion certificate awarded for academic and organizational cybersecurity awareness training via the PHISHGUARD interactive platform. It represents demonstrated defensive knowledge on training simulations and is not an accredited professional certification.
+      </div>
+
+      <!-- Certificate Action Buttons (Hidden when printing) -->
+      <div class="no-print mt-4 d-flex justify-content-center gap-3">
+        <button class="btn btn-cyber-primary" onclick="window.print()">
+          Print / Save Certificate (PDF)
+        </button>
+        <a href="/dashboard" class="btn btn-cyber-outline">
+          Back to Learning Dashboard
+        </a>
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="cyber-footer no-print">
+    <div class="container text-center text-muted" style="font-size: 0.85rem;">
+      PHISHGUARD Educational Cybersecurity Training Platform • College Capstone Project
+    </div>
+  </footer>
+
+  <script src="/static/js/app.js"></script>
+  <script src="/static/js/assessment.js"></script>
+</body>
+</html>
+

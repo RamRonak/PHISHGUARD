@@ -1,0 +1,88 @@
+================================================================================
+           PHISHGUARD CYBERSECURITY AWARENESS & DEFENSE CHECKLIST
+                 "Think Before You Click • Verify Out-of-Band"
+================================================================================
+Educational Resource Provided by PHISHGUARD Training Platform (Task 2)
+Applicable for: Enterprise Employees, Remote Workers, Students, and Everyday Users
+
+--------------------------------------------------------------------------------
+1. EMAIL SCREENING: THE S.L.A.M. METHOD
+--------------------------------------------------------------------------------
+[ ] S - SENDER VERIFICATION
+    * Expand the sender's full email address (not just the friendly display name).
+    * Check for subtle character substitutions (e.g., 'micros0ft.com' vs 'microsoft.com').
+    * Compare the 'Reply-To' header: Does it match the visible sender domain?
+    * Watch for generic free webmail domains (@gmail.com, @yahoo.com) masquerading 
+      as corporate or IT helpdesk entities.
+
+[ ] L - LINK INSPECTION (NEVER BLIND CLICK)
+    * Hover your cursor over any hyperlink to preview the actual destination URL.
+    * Inspect the true registered domain (the part immediately before the first single '/').
+    * Beware of subdomain deception (e.g., 'login.microsoft.com.attacker-controlled.net').
+    * Remember: An HTTPS padlock ONLY means transit is encrypted; it does NOT mean 
+      the website is legitimate or safe!
+
+[ ] A - ATTACHMENT SCRUTINY
+    * Were you expecting this attachment? If unexpected, pause immediately.
+    * Never open container files (.iso, .img, .vhd) or password-protected .zip files 
+      sent from external or unfamiliar senders.
+    * Avoid macro-enabled documents (.docm, .xlsm) that ask you to "Enable Editing" 
+      or "Enable Content".
+
+[ ] M - MESSAGE CONTEXT & PSYCHOLOGY
+    * Does the email create extreme urgency, fear of penalty, or artificial deadlines?
+    * Does it request wire transfers, gift cards, password changes, or MFA codes?
+    * Does it claim to be from a CEO, executive, or legal team demanding secrecy?
+
+--------------------------------------------------------------------------------
+2. OUT-OF-BAND (OOB) VERIFICATION RULES
+--------------------------------------------------------------------------------
+[ ] NEVER verify a suspicious request using contact details provided INSIDE the 
+    suspicious message itself.
+[ ] Call the sender directly using an independently verified phone number from 
+    the official company directory, intranet, or previous legitimate invoices.
+[ ] For banking or routing number changes: Dual-control phone callback confirmation 
+    is MANDATORY before executing any wire or payment.
+
+--------------------------------------------------------------------------------
+3. AUTHENTICATION & CREDENTIAL HYGIENE
+--------------------------------------------------------------------------------
+[ ] Multi-Factor Authentication (MFA):
+    * Enable MFA on all email, banking, cloud, and work accounts.
+    * Prefer phishing-resistant MFA (FIDO2 / WebAuthn hardware keys or Passkeys) 
+      over SMS-based codes or simple push notifications.
+    * NEVER approve an MFA push notification you did not directly trigger! 
+      (Beware of MFA Fatigue / Spamming attacks).
+[ ] Password Management:
+    * Use a reputable password manager. Password managers strictly match domain 
+      origin and will NEVER auto-fill credentials on lookalike phishing domains.
+    * Ensure unique 16+ character passphrases for every distinct online service.
+
+--------------------------------------------------------------------------------
+4. BROWSER & SYSTEM HYGIENE
+--------------------------------------------------------------------------------
+[ ] Keep your web browser, operating system, and endpoint software updated.
+[ ] Be cautious of search engine sponsored ads when searching for login portals 
+    (e.g., searches for "Bank of America login" or "AnyDesk support" frequently show 
+    malicious sponsored ad clones).
+[ ] Manually type known official URLs into your address bar, or use verified bookmarks.
+
+--------------------------------------------------------------------------------
+5. EMERGENCY INCIDENT RESPONSE: "IF YOU CLICKED"
+--------------------------------------------------------------------------------
+If you clicked a suspicious link or suspect you entered credentials on a fake site:
+1. DISCONNECT IMMEDIATELY: Disconnect Ethernet cable or disable Wi-Fi to stop 
+   lateral network traversal or active malware communication.
+2. REPORT PROMPTLY: Notify your internal IT Helpdesk, SOC, or Security Team. 
+   Organizations maintain a strict NO-BLAME policy for rapid, honest reporting!
+3. RESET CREDENTIALS: From a separate, known-clean device, immediately change 
+   the compromised password.
+4. REVOKE SESSIONS: Access your identity provider account settings (e.g., Microsoft 365, 
+   Google Workspace) and click "Sign out of all active sessions".
+5. DOCUMENT: Take note of the exact time, email subject, and any information entered.
+
+================================================================================
+Stay Vigilant • Protect Your Organization • Think Before You Click!
+PHISHGUARD Training Platform | College Cybersecurity Capstone Project
+================================================================================
+

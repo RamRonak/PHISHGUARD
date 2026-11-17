@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>15-Question Phishing Awareness Quiz – PHISHGUARD</title>
+  <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/static/css/phishguard.css">
+</head>
+<body>
+
+  <!-- Main Navigation Bar -->
+  <nav class="navbar-phishguard">
+    <div class="container d-flex justify-content-between align-items-center flex-wrap gap-2">
+      <a href="/" class="brand-wrapper">
+        <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+        </svg>
+        <span>PHISHGUARD</span>
+        <span class="brand-badge">Security Training</span>
+      </a>
+
+      <div class="nav-links-wrapper">
+        <a href="/" class="nav-item-link">Home</a>
+        <a href="/fundamentals" class="nav-item-link">Fundamentals</a>
+        <a href="/emails" class="nav-item-link">Emails</a>
+        <a href="/fake-websites" class="nav-item-link">Fake Sites</a>
+        <a href="/social-engineering" class="nav-item-link">Social Eng.</a>
+        <a href="/case-studies" class="nav-item-link">Case Studies</a>
+        <a href="/quiz" class="nav-item-link active">Quiz</a>
+        <a href="/simulation-lab" class="nav-item-link">Sim Lab</a>
+        <a href="/safety-guide" class="nav-item-link">Safety Guide</a>
+        <a href="/final-assessment" class="nav-item-link">Assessment</a>
+        <a href="/dashboard" class="nav-item-link" style="color: #60a5fa; border-left: 1px solid var(--border-color); padding-left: 0.75rem;">Dashboard</a>
+        <button id="themeToggleBtn" class="theme-toggle-btn" onclick="togglePhishGuardTheme()" title="Toggle Light/Dark Theme"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg> <span>Dark</span></button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Global Training Progress Bar Ticker -->
+  <div class="nav-ticker-bar">
+    <div class="container d-flex justify-content-between align-items-center">
+      <span style="color: var(--text-muted);">Curriculum Progress: <strong id="navProgressText" style="color: var(--accent-blue-text);">0% Complete</strong></span>
+      <div class="nav-progress-track">
+        <div id="navProgressFill" class="nav-progress-fill"></div>
+      </div>
+    </div>
+  </div>
+
+  <main class="container py-5">
+    <div class="mb-4">
+      <span class="section-tag">PAGE 7 • KNOWLEDGE VERIFICATION</span>
+      <h1 class="section-title">Phishing Awareness Quiz</h1>
+      <p class="section-desc">
+        Test your defensive acumen across 15 scenario-driven questions spanning Beginner, Intermediate, and Advanced cybersecurity concepts.
+      </p>
+    </div>
+
+    <!-- Active Quiz Card Container -->
+    <div id="quizActiveArea" class="cyber-card mb-5" style="border: 1px solid var(--border-color); max-width: 900px; margin: 0 auto;">
+      <!-- Quiz Progress Header -->
+      <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 pb-3 mb-4 border-bottom border-secondary">
+        <div class="d-flex align-items-center gap-2">
+          <span class="cyber-badge" id="quizLevelBadge">Beginner</span>
+          <span class="text-white fw-bold" id="quizProgressText">Question 1 of 15</span>
+        </div>
+        <div class="d-flex align-items-center gap-3">
+          <div style="width: 120px; height: 8px; background: #0b1426; border-radius: 9999px; overflow: hidden; border: 1px solid var(--border-color);">
+            <div id="quizProgressBar" style="width: 0%; height: 100%; background: var(--accent-blue); transition: width 0.3s ease;"></div>
+          </div>
+          <span class="cyber-badge badge-blue" id="quizScoreText">Score: 0</span>
+        </div>
+      </div>
+
+      <!-- Question Text -->
+      <h3 class="text-white fw-bold mb-4" id="quizQuestionText" style="line-height: 1.4; font-size: 1.35rem;">
+        Loading question...
+      </h3>
+
+      <!-- 4 Multiple Choice Options Container -->
+      <div class="d-flex flex-column gap-3 mb-4" id="quizOptionsContainer">
+        <!-- Rendered by quiz.js -->
+      </div>
+
+      <!-- Immediate Feedback & Explanation Box -->
+      <div id="quizExplanationBox" class="quiz-explanation-box">
+        <!-- Populated by quiz.js -->
+      </div>
+
+      <!-- Controls -->
+      <div class="d-flex justify-content-end mt-4">
+        <button class="btn btn-cyber-primary" id="quizNextBtn" style="display: none;" onclick="handleNextQuestion()">
+          Next Question →
+        </button>
+      </div>
+    </div>
+
+    <!-- Quiz Results & Performance Diagnostic Screen -->
+    <div id="quizResultsArea" class="cyber-card text-center py-5 mb-5" style="display: none; max-width: 850px; margin: 0 auto; border: 1px solid var(--border-color);">
+      <div style="font-size: 2.5rem; margin-bottom: 1rem; color: #3b82f6;"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg></div>
+      <h2 class="text-white fw-bold mb-2">Quiz Completed!</h2>
+      <p class="text-muted mb-4" id="finalScoreFraction">You completed all 15 questions.</p>
+
+      <div class="d-inline-block p-4 mb-4" style="background: var(--surface-2); border: 1px solid var(--border-color); border-radius: var(--radius-lg); min-width: 200px;">
+        <div style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700;">Final Score</div>
+        <div style="font-size: 3.5rem; font-weight: 900; color: var(--text-main);" id="finalScorePct">0%</div>
+      </div>
+
+      <div class="mb-4">
+        <span class="cyber-badge" id="finalGradeBadge" style="font-size: 1rem; padding: 0.4rem 1rem;">Mastery Rating</span>
+        <p class="text-muted mt-3" id="finalGradeExplanation" style="max-width: 600px; margin: 0.75rem auto 0; font-size: 0.95rem; line-height: 1.6;">
+          Diagnostic explanation...
+        </p>
+      </div>
+
+      <div class="d-flex justify-content-center flex-wrap gap-3 mt-4">
+        <button class="btn btn-cyber-outline" onclick="initQuiz()">
+          Retake Quiz
+        </button>
+        <a href="/simulation-lab" class="btn btn-cyber-primary">
+          Enter Simulation Lab (Module 8) →
+        </a>
+      </div>
+    </div>
+
+    <!-- Navigation & Next Steps -->
+    <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 pt-4 border-top border-secondary">
+      <a href="/case-studies" class="btn btn-cyber-outline">← Back to Case Studies</a>
+      <a href="/simulation-lab" class="btn btn-cyber-primary">
+        Go to Module 8: Simulation Lab →
+      </a>
+    </div>
+  </main>
+
+  <footer class="cyber-footer">
+    <div class="container text-center text-muted" style="font-size: 0.85rem;">
+      PHISHGUARD Educational Cybersecurity Training Platform • College Capstone Project
+    </div>
+  </footer>
+
+  <script src="/static/js/app.js"></script>
+  <script src="/static/js/quiz.js"></script>
+</body>
+</html>
+

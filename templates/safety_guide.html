@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prevention & Safety Guide – PHISHGUARD</title>
+  <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/static/css/phishguard.css">
+</head>
+<body>
+
+  <!-- Main Navigation Bar -->
+  <nav class="navbar-phishguard">
+    <div class="container d-flex justify-content-between align-items-center flex-wrap gap-2">
+      <a href="/" class="brand-wrapper">
+        <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+        </svg>
+        <span>PHISHGUARD</span>
+        <span class="brand-badge">Security Training</span>
+      </a>
+
+      <div class="nav-links-wrapper">
+        <a href="/" class="nav-item-link">Home</a>
+        <a href="/fundamentals" class="nav-item-link">Fundamentals</a>
+        <a href="/emails" class="nav-item-link">Emails</a>
+        <a href="/fake-websites" class="nav-item-link">Fake Sites</a>
+        <a href="/social-engineering" class="nav-item-link">Social Eng.</a>
+        <a href="/case-studies" class="nav-item-link">Case Studies</a>
+        <a href="/quiz" class="nav-item-link">Quiz</a>
+        <a href="/simulation-lab" class="nav-item-link">Sim Lab</a>
+        <a href="/safety-guide" class="nav-item-link active">Safety Guide</a>
+        <a href="/final-assessment" class="nav-item-link">Assessment</a>
+        <a href="/dashboard" class="nav-item-link" style="color: #60a5fa; border-left: 1px solid var(--border-color); padding-left: 0.75rem;">Dashboard</a>
+        <button id="themeToggleBtn" class="theme-toggle-btn" onclick="togglePhishGuardTheme()" title="Toggle Light/Dark Theme"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg> <span>Dark</span></button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Global Training Progress Bar Ticker -->
+  <div class="nav-ticker-bar">
+    <div class="container d-flex justify-content-between align-items-center">
+      <span style="color: var(--text-muted);">Curriculum Progress: <strong id="navProgressText" style="color: var(--accent-blue-text);">0% Complete</strong></span>
+      <div class="nav-progress-track">
+        <div id="navProgressFill" class="nav-progress-fill"></div>
+      </div>
+    </div>
+  </div>
+
+  <main class="container py-5">
+    <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 mb-5">
+      <div>
+        <span class="section-tag">PAGE 9 • DEFENSIVE RUNBOOK</span>
+        <h1 class="section-title">Prevention & Cyber Safety Guide</h1>
+        <p class="section-desc">
+          10 actionable cybersecurity best practices and an enterprise defense checklist to inoculate yourself against social engineering attacks.
+        </p>
+      </div>
+
+      <!-- Download Button -->
+      <div>
+        <a href="/checklist.txt" class="btn btn-cyber-primary btn-lg" download="PhishGuard_Cybersecurity_Checklist.txt">
+          Download Defense Checklist (.TXT)
+        </a>
+      </div>
+    </div>
+
+    <!-- 10 Best Practices Grid -->
+    <div class="row g-4 mb-5">
+
+      <div class="col-md-6">
+        <div class="cyber-card h-100 p-4">
+          <div class="d-flex align-items-center gap-3 mb-2">
+            <span class="cyber-badge badge-blue" style="font-size: 0.9rem;">RULE 1</span>
+            <h5 class="text-white fw-bold mb-0">Verify the Sender</h5>
+          </div>
+          <p class="text-muted" style="font-size: 0.9rem;">
+            Never rely on the friendly display name alone. Always inspect the full email address header and verify that the <code>Reply-To</code> address matches the legitimate corporate domain.
+          </p>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="cyber-card h-100 p-4">
+          <div class="d-flex align-items-center gap-3 mb-2">
+            <span class="cyber-badge badge-blue" style="font-size: 0.9rem;">RULE 2</span>
+            <h5 class="text-white fw-bold mb-0">Inspect Links Before Opening</h5>
+          </div>
+          <p class="text-muted" style="font-size: 0.9rem;">
+            Hover over every hyperlink (or long-press on mobile) to inspect the true destination. Remember to locate the registered domain immediately preceding the first single slash (<code>/</code>).
+          </p>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="cyber-card h-100 p-4">
+          <div class="d-flex align-items-center gap-3 mb-2">
+            <span class="cyber-badge badge-red" style="font-size: 0.9rem;">RULE 3</span>
+            <h5 class="text-white fw-bold mb-0">Never Share OTPs or Passwords</h5>
+          </div>
+          <p class="text-muted" style="font-size: 0.9rem;">
+            No legitimate bank, IT technician, or software administrator will EVER ask you to read back a multi-factor SMS passcode or disclose your private password over the phone or via email.
+          </p>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="cyber-card h-100 p-4">
+          <div class="d-flex align-items-center gap-3 mb-2">
+            <span class="cyber-badge badge-green" style="font-size: 0.9rem;">RULE 4</span>
+            <h5 class="text-white fw-bold mb-0">Enable Multi-Factor Authentication</h5>
+          </div>
+          <p class="text-muted" style="font-size: 0.9rem;">
+            Enforce MFA on all personal and work accounts. Whenever possible, choose <strong>phishing-resistant MFA</strong> (FIDO2 / Passkeys or hardware YubiKeys) over vulnerable SMS text codes.
+          </p>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="cyber-card h-100 p-4">
+          <div class="d-flex align-items-center gap-3 mb-2">
+            <span class="cyber-badge badge-green" style="font-size: 0.9rem;">RULE 5</span>
+            <h5 class="text-white fw-bold mb-0">Use Strong, Unique Passwords</h5>
+          </div>
+          <p class="text-muted" style="font-size: 0.9rem;">
+            Adopt memorable 4-word passphrases (e.g. <code>correct-horse-battery-staple</code>) that exceed 16 characters. Never reuse the same password across personal and enterprise accounts.
+          </p>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="cyber-card h-100 p-4">
+          <div class="d-flex align-items-center gap-3 mb-2">
+            <span class="cyber-badge badge-blue" style="font-size: 0.9rem;">RULE 6</span>
+            <h5 class="text-white fw-bold mb-0">Keep Software Updated</h5>
+          </div>
+          <p class="text-muted" style="font-size: 0.9rem;">
+            Enable automatic updates on your operating system, web browsers, and endpoint security agents. Patches remediate zero-day vulnerabilities targeted by phishing payload drive-by downloads.
+          </p>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="cyber-card h-100 p-4">
+          <div class="d-flex align-items-center gap-3 mb-2">
+            <span class="cyber-badge badge-amber" style="font-size: 0.9rem;">RULE 7</span>
+            <h5 class="text-white fw-bold mb-0">Avoid Unexpected Attachments</h5>
+          </div>
+          <p class="text-muted" style="font-size: 0.9rem;">
+            Treat container files (.iso, .vhd), password-protected .zip archives, and macro-enabled documents (.docm, .xlsm) with extreme suspicion. Never click "Enable Macros" on unsolicited files.
+          </p>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="cyber-card h-100 p-4">
+          <div class="d-flex align-items-center gap-3 mb-2">
+            <span class="cyber-badge badge-blue" style="font-size: 0.9rem;">RULE 8</span>
+            <h5 class="text-white fw-bold mb-0">Out-of-Band Verification</h5>
+          </div>
+          <p class="text-muted" style="font-size: 0.9rem;">
+            Whenever an urgent financial wire, gift card purchase, or direct deposit change is requested, verify it via a separate communication channel (e.g. call on a known company extension).
+          </p>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="cyber-card h-100 p-4">
+          <div class="d-flex align-items-center gap-3 mb-2">
+            <span class="cyber-badge badge-amber" style="font-size: 0.9rem;">RULE 9</span>
+            <h5 class="text-white fw-bold mb-0">Report Suspicious Messages</h5>
+          </div>
+          <p class="text-muted" style="font-size: 0.9rem;">
+            Use your email client's "Report Phishing" button. Early reporting allows the Security Operations Center (SOC) to purge the lure from every other employee inbox across the company.
+          </p>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="cyber-card h-100 p-4">
+          <div class="d-flex align-items-center gap-3 mb-2">
+            <span class="cyber-badge badge-green" style="font-size: 0.9rem;">RULE 10</span>
+            <h5 class="text-white fw-bold mb-0">Use a Password Manager</h5>
+          </div>
+          <p class="text-muted" style="font-size: 0.9rem;">
+            Password managers provide cryptographic domain origin verification. They will NEVER auto-fill credentials on lookalike or typosquatted domains (e.g. <code>paypa1.com</code>).
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- On-Screen Checklist Viewer -->
+    <div class="cyber-card mb-5" style="border: 1px solid var(--border-color);">
+      <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-3">
+        <h4 class="text-white fw-bold mb-0">In-Browser Cybersecurity Defense Checklist</h4>
+        <button class="btn btn-cyber-outline btn-sm" onclick="window.print()">
+          Print Checklist
+        </button>
+      </div>
+
+      <div class="row g-3" style="font-size: 0.9rem;">
+        <div class="col-md-6">
+          <div class="form-check text-muted mb-2">
+            <input class="form-check-input" type="checkbox" id="chk1" checked>
+            <label class="form-check-label text-white" for="chk1">
+              I expand the full sender email header, not just the display name.
+            </label>
+          </div>
+          <div class="form-check text-muted mb-2">
+            <input class="form-check-input" type="checkbox" id="chk2" checked>
+            <label class="form-check-label text-white" for="chk2">
+              I hover over hyperlinks to inspect the true domain before clicking.
+            </label>
+          </div>
+          <div class="form-check text-muted mb-2">
+            <input class="form-check-input" type="checkbox" id="chk3" checked>
+            <label class="form-check-label text-white" for="chk3">
+              I never share MFA codes or passwords over phone calls or email.
+            </label>
+          </div>
+          <div class="form-check text-muted mb-2">
+            <input class="form-check-input" type="checkbox" id="chk4" checked>
+            <label class="form-check-label text-white" for="chk4">
+              I use a password manager for unique passwords on every service.
+            </label>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="form-check text-muted mb-2">
+            <input class="form-check-input" type="checkbox" id="chk5" checked>
+            <label class="form-check-label text-white" for="chk5">
+              I verify banking or wire requests via out-of-band phone callbacks.
+            </label>
+          </div>
+          <div class="form-check text-muted mb-2">
+            <input class="form-check-input" type="checkbox" id="chk6" checked>
+            <label class="form-check-label text-white" for="chk6">
+              I never enable VBA macros on unsolicited email documents.
+            </label>
+          </div>
+          <div class="form-check text-muted mb-2">
+            <input class="form-check-input" type="checkbox" id="chk7" checked>
+            <label class="form-check-label text-white" for="chk7">
+              I report suspicious emails to IT Security within 5 minutes.
+            </label>
+          </div>
+          <div class="form-check text-muted mb-2">
+            <input class="form-check-input" type="checkbox" id="chk8" checked>
+            <label class="form-check-label text-white" for="chk8">
+              I understand that an HTTPS padlock does NOT guarantee a site is safe.
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navigation & Next Steps -->
+    <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 pt-4 border-top border-secondary">
+      <a href="/simulation-lab" class="btn btn-cyber-outline">← Back to Simulation Lab</a>
+      <button class="btn btn-cyber-success btn-lg" onclick="continueToAssessment()">
+        Proceed to Final Assessment & Certification (Module 10) →
+      </button>
+    </div>
+  </main>
+
+  <footer class="cyber-footer">
+    <div class="container text-center text-muted" style="font-size: 0.85rem;">
+      PHISHGUARD Educational Cybersecurity Training Platform • College Capstone Project
+    </div>
+  </footer>
+
+  <script src="/static/js/app.js"></script>
+  <script>
+    function continueToAssessment() {
+      markModuleCompleted('safety_guide');
+      playCyberTone('success');
+      setTimeout(() => {
+        window.location.href = '/final-assessment';
+      }, 350);
+    }
+  </script>
+</body>
+</html>
+
